@@ -8,20 +8,44 @@
 
   const state = {
     lang: "pt",
-    projectFilter: "all",
     openModals: 0
   };
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const COVER_GRADIENTS = {
-    software: "linear-gradient(135deg,#3452FF,#6C3CE9)",
-    web: "linear-gradient(135deg,#0EA5E9,#3452FF)",
-    mobile: "linear-gradient(135deg,#7C3AED,#D946EF)",
-    systems: "linear-gradient(135deg,#0F172A,#3452FF)",
-    consulting: "linear-gradient(135deg,#1E293B,#7C3AED)",
-    automation: "linear-gradient(135deg,#059669,#0EA5E9)"
-  };
+  const AKITEM_GRADIENT = "linear-gradient(135deg,#3452FF,#6C3CE9)";
+
+  /**
+   * Concept illustration for AkiTem+: a user location pinging nearby
+   * businesses with real-time availability. Hand-drawn in the same
+   * line-art language as the hero network graphic — not a screenshot,
+   * since the app has no real UI to show yet.
+   */
+  function akitemVisualSVG() {
+    return `
+      <svg class="pv-map" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <circle class="pv-radius" cx="230" cy="235" r="150" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 9"/>
+        <g class="pv-links" stroke="currentColor" stroke-width="1.1" fill="none">
+          <line x1="230" y1="235" x2="440" y2="130"/>
+          <line x1="230" y1="235" x2="510" y2="245"/>
+          <line x1="230" y1="235" x2="405" y2="355"/>
+        </g>
+        <g transform="translate(230,235)">
+          <circle class="pv-ring" r="28" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle r="9" fill="currentColor"/>
+        </g>
+        <g class="pv-pins" fill="currentColor">
+          <circle cx="440" cy="130" r="5"/>
+          <circle cx="510" cy="245" r="5"/>
+          <circle cx="405" cy="355" r="5"/>
+        </g>
+        <g class="pv-dots">
+          <circle cx="452" cy="118" r="4.5"/>
+          <circle cx="522" cy="233" r="4.5"/>
+          <circle cx="417" cy="343" r="4.5"/>
+        </g>
+      </svg>`;
+  }
   const NEWS_GRADIENTS = [
     "linear-gradient(135deg,#3452FF,#6C3CE9)",
     "linear-gradient(135deg,#0EA5E9,#3452FF)",
@@ -326,21 +350,19 @@
   }
 
   function projectCardHTML(p) {
-    const gradient = COVER_GRADIENTS[p.category] || COVER_GRADIENTS.software;
     return `
-      <article class="project-card reveal is-visible" data-id="${p.id}" data-category="${p.category}">
-        <div class="project-cover" style="--cover-gradient:${gradient}">
+      <article class="project-card reveal is-visible" data-id="${p.id}">
+        <div class="project-cover is-wide" style="--cover-gradient:${AKITEM_GRADIENT}">
           <div class="project-cover-grid"></div>
+          ${akitemVisualSVG()}
           <span class="project-cover-cat">${escapeHTML(t("projects.filter." + p.category))}</span>
         </div>
         <div class="project-body">
           <h3>${escapeHTML(p.title)}</h3>
           <p>${escapeHTML(p.description)}</p>
           <div class="project-meta">
-            <div class="project-tech-mini">
-              ${p.technologies.slice(0, 3).map((tech) => `<span>${escapeHTML(tech)}</span>`).join("")}
-            </div>
-            <span class="project-year">${escapeHTML(p.year)}</span>
+            <span class="project-status"><i></i>${escapeHTML(t("projects.status"))}</span>
+            <span class="project-view">${escapeHTML(t("projects.view"))} &rarr;</span>
           </div>
         </div>
       </article>`;
@@ -350,28 +372,44 @@
     const grid = document.getElementById("projectsGrid");
     const list = projectsData[state.lang] || projectsData.pt;
     grid.innerHTML = list.map(projectCardHTML).join("");
-    applyProjectFilter();
   }
 
-  function applyProjectFilter() {
-    document.querySelectorAll("#projectsGrid .project-card").forEach((card) => {
-      const show = state.projectFilter === "all" || card.dataset.category === state.projectFilter;
-      card.classList.toggle("is-hidden", !show);
-    });
+  function stepsHTML(steps) {
+    return steps.map((s, i) => `
+      <div class="mc-step">
+        <span class="mc-step-num">${String(i + 1).padStart(2, "0")}</span>
+        <h5>${escapeHTML(s.title)}</h5>
+        <p>${escapeHTML(s.text)}</p>
+      </div>`).join("");
+  }
+
+  function modulesHTML(modules) {
+    return modules.map((m) => `
+      <div class="mc-module">
+        <h5>${escapeHTML(m.title)}</h5>
+        <p>${escapeHTML(m.text)}</p>
+      </div>`).join("");
+  }
+
+  function listHTML(items) {
+    return `<ul class="mc-results">${items.map((i) => `<li>${escapeHTML(i)}</li>`).join("")}</ul>`;
   }
 
   function openProjectModal(id) {
     const project = (projectsData[state.lang] || projectsData.pt).find((p) => p.id === id);
     if (!project) return;
-    const gradient = COVER_GRADIENTS[project.category] || COVER_GRADIENTS.software;
 
     document.getElementById("projectModalBody").innerHTML = `
-      <div class="mc-cover" style="--cover-gradient:${gradient}"></div>
+      <div class="mc-cover" style="--cover-gradient:${AKITEM_GRADIENT}">
+        <div class="project-cover-grid"></div>
+        ${akitemVisualSVG()}
+      </div>
       <span class="mc-tag">${escapeHTML(t("projects.filter." + project.category))}</span>
       <h3 class="mc-title">${escapeHTML(project.title)}</h3>
-      <div class="mc-meta">
-        <span><strong>${escapeHTML(t("projects.year"))}:</strong> ${escapeHTML(project.year)}</span>
-      </div>
+      <p class="mc-tagline">${escapeHTML(project.tagline)}</p>
+      <span class="mc-badge"><i></i>${escapeHTML(t("projects.status"))}</span>
+      <p class="mc-lede">${escapeHTML(project.lede)}</p>
+
       <div class="mc-section">
         <h4>${escapeHTML(t("projects.problem"))}</h4>
         <p>${escapeHTML(project.problem)}</p>
@@ -381,16 +419,32 @@
         <p>${escapeHTML(project.solution)}</p>
       </div>
       <div class="mc-section">
-        <h4>${escapeHTML(t("projects.technologies"))}</h4>
-        <div class="mc-tech">${project.technologies.map((tech) => `<span>${escapeHTML(tech)}</span>`).join("")}</div>
+        <h4>${escapeHTML(t("projects.howItWorks"))}</h4>
+        <div class="mc-steps">${stepsHTML(project.steps)}</div>
       </div>
       <div class="mc-section">
-        <h4>${escapeHTML(t("projects.results"))}</h4>
-        <ul class="mc-results">${project.results.map((r) => `<li>${escapeHTML(r)}</li>`).join("")}</ul>
+        <h4>${escapeHTML(t("projects.modules"))}</h4>
+        <div class="mc-modules">${modulesHTML(project.modules)}</div>
       </div>
       <div class="mc-section">
-        <h4>${escapeHTML(t("projects.gallery"))}</h4>
-        <div class="mc-gallery"><div></div><div></div><div></div></div>
+        <div class="mc-columns">
+          <div>
+            <h4>${escapeHTML(t("projects.forSeekers"))}</h4>
+            ${listHTML(project.forSeekers)}
+          </div>
+          <div>
+            <h4>${escapeHTML(t("projects.forBusinesses"))}</h4>
+            ${listHTML(project.forBusinesses)}
+          </div>
+        </div>
+      </div>
+      <div class="mc-section">
+        <h4>${escapeHTML(t("projects.capabilities"))}</h4>
+        <div class="mc-tech">${project.capabilities.map((c) => `<span>${escapeHTML(c)}</span>`).join("")}</div>
+      </div>
+      <div class="mc-section mc-status-block">
+        <h4><i></i>${escapeHTML(t("projects.status"))}</h4>
+        <p>${escapeHTML(project.statusText)}</p>
       </div>`;
 
     openModal(document.getElementById("projectModal"));
@@ -400,14 +454,6 @@
     document.getElementById("projectsGrid").addEventListener("click", (e) => {
       const card = e.target.closest(".project-card");
       if (card) openProjectModal(card.dataset.id);
-    });
-
-    document.getElementById("projectFilters").addEventListener("click", (e) => {
-      const btn = e.target.closest(".filter-btn");
-      if (!btn) return;
-      state.projectFilter = btn.dataset.filter;
-      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
-      applyProjectFilter();
     });
 
     renderProjects();
@@ -501,41 +547,6 @@
     });
   }
 
-  /* --------------------------------------------------------------- form */
-
-  function initContactForm() {
-    const form = document.getElementById("contactForm");
-    const success = document.getElementById("formSuccess");
-    const fields = form.querySelectorAll("input, select, textarea");
-
-    fields.forEach((field) => {
-      field.addEventListener("input", () => {
-        if (field.validity.valid) field.classList.remove("is-invalid");
-      });
-    });
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        fields.forEach((field) => field.classList.toggle("is-invalid", !field.validity.valid));
-        form.reportValidity();
-        return;
-      }
-      const submitBtn = form.querySelector(".form-submit");
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        form.reset();
-        fields.forEach((field) => field.classList.remove("is-invalid"));
-        submitBtn.disabled = false;
-        success.hidden = false;
-        setTimeout(() => {
-          success.hidden = true;
-        }, 6000);
-      }, 500);
-    });
-  }
-
   /* ---------------------------------------------------------------- init */
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -551,7 +562,6 @@
     initProjects();
     initNews();
     initWorkshops();
-    initContactForm();
     updateProgressBar();
     updateBackToTop();
   });

@@ -13,13 +13,11 @@
   .process-timeline { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-8); }
   .process-timeline::before { display: none; }
 
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .workshops-grid { grid-template-columns: repeat(3, 1fr); }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
 
   .consulting-layout,
-  .about-layout,
-  .contact-layout { grid-template-columns: 1fr; gap: var(--space-7); }
+  .about-layout { grid-template-columns: 1fr; gap: var(--space-7); }
 
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(2n+1) { border-left: none; }
@@ -36,9 +34,11 @@
   .container { padding-inline: 1.15rem; }
   .section { padding-block: var(--space-8); }
 
+  .hero { min-height: auto; padding-bottom: var(--space-9); }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .hero-cta .btn { width: 100%; }
   .hero-title-brand { letter-spacing: 0.35em; }
+  .hero-caps { margin-top: var(--space-4); }
 
   .nav-cta { display: none; }
 
@@ -46,9 +46,6 @@
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
   .process-timeline { grid-template-columns: 1fr; }
 
-  .project-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--space-2); -webkit-overflow-scrolling: touch; }
-  .project-filters::-webkit-scrollbar { display: none; }
-  .projects-grid { grid-template-columns: 1fr; }
   .workshops-grid { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: 1fr; }
 
@@ -57,12 +54,11 @@
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 
-  .contact-form { padding: var(--space-6) var(--space-5); }
   .contact-info { gap: var(--space-6); }
 
   .modal-panel { margin-top: 0; max-height: 100vh; height: 100vh; border-radius: 0; width: 100vw; }
   .modal-body { padding-inline: var(--space-5); }
-  .mc-gallery { grid-template-columns: repeat(2, 1fr); }
+  .mc-columns { grid-template-columns: 1fr; gap: var(--space-6); }
 
   .back-to-top { right: var(--space-4); bottom: var(--space-4); width: 42px; height: 42px; }
 

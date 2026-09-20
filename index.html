@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.title">DIAH — Tecnologia que transforma ideias em soluções</title>
 <meta name="description" content="DIAH é uma empresa de desenvolvimento de software, sistemas, aplicações web e mobile, consultoria tecnológica e formação." data-i18n-attr="content:meta.description">
-<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -20,15 +22,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="#top" class="logo" aria-label="DIAH — home">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
-          <rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M9 22V10h4.6a5.4 5.4 0 0 1 0 10.8V22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="22.5" cy="10.5" r="1.6" fill="currentColor"/>
-          <path d="M22.5 14v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-      </span>
-      <span class="logo-text">DIAH</span>
+      <img class="logo-mark-img" src="assets/logo/diah-mark.png" alt="DIAH Solutions">
     </a>
 
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
@@ -110,16 +104,16 @@
     </div>
 
     <div class="container hero-inner">
-      <p class="eyebrow" data-reveal data-i18n="hero.eyebrow">DIAH — IT, Software Development &amp; Digital Solutions</p>
       <h1 class="hero-title" data-reveal>
         <span class="hero-title-brand">DIAH</span>
-        <span class="hero-title-tagline" data-i18n="hero.tagline">Tecnologia que transforma ideias em soluções.</span>
+        <span class="hero-title-tagline" data-i18n="hero.tagline">Transformamos desafios de negócio em soluções digitais simples.</span>
       </h1>
-      <p class="hero-text" data-reveal data-i18n="hero.text">Desenvolvemos software, sistemas e soluções digitais que ajudam organizações a resolver problemas reais, optimizar processos e criar novas oportunidades.</p>
+      <p class="hero-text" data-reveal data-i18n="hero.text">A DIAH combina software, automação, dados e consultoria tecnológica para ajudar organizações a trabalhar melhor, mais rápido e de forma mais inteligente.</p>
       <div class="hero-cta" data-reveal>
-        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Fale connosco</a>
-        <a href="#services" class="btn btn-ghost" data-i18n="hero.cta_secondary">Conheça os nossos serviços</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Fale Conosco</a>
+        <a href="#about" class="btn btn-ghost" data-i18n="hero.cta_secondary">Conhecer a DIAH</a>
       </div>
+      <p class="hero-caps" data-reveal data-i18n="hero.caps">Software · Automation · Data &amp; AI · Technology Consulting</p>
     </div>
 
     <a href="#services" class="scroll-indicator" data-reveal data-i18n-attr="aria-label:hero.scroll" aria-label="Scroll">
@@ -194,31 +188,37 @@
         <div class="tech-col" data-reveal>
           <h3 data-i18n="tech.frontend">Frontend</h3>
           <ul class="tag-list">
-            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>React</li>
+            <li>JavaScript</li><li>Vue.js</li>
           </ul>
         </div>
         <div class="tech-col" data-reveal>
           <h3 data-i18n="tech.backend">Backend</h3>
           <ul class="tag-list">
-            <li>Node.js</li><li>Python</li><li>Java</li><li>.NET</li><li>PHP</li>
+            <li>Python</li><li>APIs</li>
           </ul>
         </div>
         <div class="tech-col" data-reveal>
           <h3 data-i18n="tech.mobile">Mobile</h3>
           <ul class="tag-list">
-            <li>Flutter</li><li>React Native</li><li>Android</li><li>iOS</li>
+            <li>Expo</li>
           </ul>
         </div>
         <div class="tech-col" data-reveal>
           <h3 data-i18n="tech.database">Database</h3>
           <ul class="tag-list">
-            <li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>SQL Server</li>
+            <li>PostgreSQL</li>
           </ul>
         </div>
         <div class="tech-col" data-reveal>
           <h3 data-i18n="tech.cloud">Cloud &amp; DevOps</h3>
           <ul class="tag-list">
-            <li>AWS</li><li>Azure</li><li>Docker</li><li>Git</li><li>CI/CD</li>
+            <li>Docker</li><li>Kubernetes</li>
+          </ul>
+        </div>
+        <div class="tech-col" data-reveal>
+          <h3 data-i18n="tech.workflow">Data &amp; Workflow</h3>
+          <ul class="tag-list">
+            <li>Temporal.io</li><li>Formance</li><li>Spark</li><li>Process Mining</li><li>GIS</li>
           </ul>
         </div>
       </div>
@@ -264,16 +264,6 @@
       <div class="section-head" data-reveal>
         <p class="eyebrow" data-i18n="projects.eyebrow">Projectos</p>
         <h2 class="section-title" data-i18n="projects.title">Tecnologia aplicada a problemas reais.</h2>
-      </div>
-
-      <div class="project-filters" data-reveal id="projectFilters" role="tablist">
-        <button type="button" class="filter-btn is-active" data-filter="all" data-i18n="projects.filter.all">Todos</button>
-        <button type="button" class="filter-btn" data-filter="software" data-i18n="projects.filter.software">Software</button>
-        <button type="button" class="filter-btn" data-filter="web" data-i18n="projects.filter.web">Web</button>
-        <button type="button" class="filter-btn" data-filter="mobile" data-i18n="projects.filter.mobile">Mobile</button>
-        <button type="button" class="filter-btn" data-filter="systems" data-i18n="projects.filter.systems">Sistemas</button>
-        <button type="button" class="filter-btn" data-filter="consulting" data-i18n="projects.filter.consulting">Consultoria</button>
-        <button type="button" class="filter-btn" data-filter="automation" data-i18n="projects.filter.automation">Automação</button>
       </div>
 
       <div class="projects-grid" id="projectsGrid"><!-- rendered by main.js --></div>
@@ -391,8 +381,8 @@
 
   <!-- ============ CONTACT ============ -->
   <section class="section" id="contact">
-    <div class="container contact-layout">
-      <div data-reveal>
+    <div class="container">
+      <div class="contact-layout" data-reveal>
         <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
         <h2 class="section-title" data-i18n="contact.title">Vamos construir alguma coisa?</h2>
         <p class="section-note" data-i18n="contact.text">Tem uma ideia, um problema tecnológico ou um sistema que precisa de evoluir? Vamos conversar.</p>
@@ -400,7 +390,7 @@
         <div class="contact-info">
           <div>
             <span class="contact-info-label" data-i18n="contact.info.email">Email</span>
-            <a href="mailto:didarcia@diahsolutions.com">didarcia@diahsolutions.com</a>
+            <a href="mailto:info@diahsolutions.com">info@diahsolutions.com</a>
           </div>
           <div>
             <span class="contact-info-label" data-i18n="contact.info.location">Localização</span>
@@ -409,42 +399,10 @@
         </div>
 
         <div class="hero-cta">
-          <a href="mailto:didarcia@diahsolutions.com" class="btn btn-primary" data-i18n="contact.cta_primary">Fale connosco</a>
-          <a href="mailto:didarcia@diahsolutions.com?subject=Agendar%20reuniao" class="btn btn-ghost" data-i18n="contact.cta_secondary">Agendar reunião</a>
+          <a href="mailto:info@diahsolutions.com" class="btn btn-primary" data-i18n="contact.cta_primary">Fale connosco</a>
+          <a href="mailto:info@diahsolutions.com?subject=Agendar%20reuniao" class="btn btn-ghost" data-i18n="contact.cta_secondary">Agendar reunião</a>
         </div>
       </div>
-
-      <form class="contact-form" data-reveal id="contactForm" novalidate>
-        <div class="form-row">
-          <label for="fName" data-i18n="contact.form.name">Nome</label>
-          <input type="text" id="fName" name="name" required>
-        </div>
-        <div class="form-row">
-          <label for="fEmail" data-i18n="contact.form.email">Email</label>
-          <input type="email" id="fEmail" name="email" required>
-        </div>
-        <div class="form-row">
-          <label for="fCompany" data-i18n="contact.form.company">Empresa</label>
-          <input type="text" id="fCompany" name="company">
-        </div>
-        <div class="form-row">
-          <label for="fService" data-i18n="contact.form.service">Serviço</label>
-          <select id="fService" name="service" required>
-            <option value="" data-i18n="contact.form.service_placeholder">Seleccione um serviço</option>
-            <option value="software" data-i18n="contact.form.service_software">Software Development</option>
-            <option value="web" data-i18n="contact.form.service_web">Web &amp; Mobile</option>
-            <option value="consulting" data-i18n="contact.form.service_consulting">IT Consulting</option>
-            <option value="workshop" data-i18n="contact.form.service_workshop">Workshops &amp; Training</option>
-            <option value="other" data-i18n="contact.form.service_other">Outro</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="fMessage" data-i18n="contact.form.message">Mensagem</label>
-          <textarea id="fMessage" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary form-submit" data-i18n="contact.form.submit">Enviar mensagem</button>
-        <p class="form-success" id="formSuccess" data-i18n="contact.form.success" hidden>Mensagem enviada. Entraremos em contacto brevemente.</p>
-      </form>
     </div>
   </section>
 
@@ -454,16 +412,8 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a href="#top" class="logo">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-            <rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M9 22V10h4.6a5.4 5.4 0 0 1 0 10.8V22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <circle cx="22.5" cy="10.5" r="1.6" fill="currentColor"/>
-            <path d="M22.5 14v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="logo-text">DIAH</span>
+      <a href="#top" class="logo footer-logo">
+        <img class="footer-logo-img" src="assets/logo/diah-logo-full.png" alt="DIAH Solutions">
       </a>
       <p data-i18n="footer.tagline">Tecnologia que transforma ideias em soluções.</p>
     </div>
@@ -493,7 +443,7 @@
     <div class="footer-col">
       <h4 data-i18n="footer.contact_title">Contacto</h4>
       <ul>
-        <li><a href="mailto:didarcia@diahsolutions.com">didarcia@diahsolutions.com</a></li>
+        <li><a href="mailto:info@diahsolutions.com">info@diahsolutions.com</a></li>
         <li><span data-i18n="contact.info.location_value">Lisboa, Portugal</span></li>
       </ul>
     </div>

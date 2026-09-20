@@ -46,8 +46,8 @@ Stats (`+120 Projectos`, etc.) use `data-count="120"` on `.stat-num` elements in
 
 - Project and article **images are intentionally `null`** — the UI generates abstract gradient covers instead, so the site looks complete before real photography exists.
 - Stats, testimonials-free counters, and project/news content are placeholders for structure and tone — not real DIAH figures. Replace before launch.
-- The contact form has no backend: submitting it simulates a send (client-side only) and shows a success message. Wire it to a real endpoint (or a service like Formspree) before going live.
-- Public contact email currently set to `didarcia@diahsolutions.com`.
+- The Contact section has no form — "Fale connosco" and "Agendar reunião" both open a `mailto:` link.
+- Public contact email currently set to `info@diahsolutions.com`.
 
 ## Design system
 
