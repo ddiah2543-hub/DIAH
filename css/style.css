@@ -300,6 +300,11 @@ svg { display: block; }
 
 .footer-logo-img { width: 100%; max-width: 180px; height: auto; display: block; }
 
+/* Theme-specific logo variants — must follow the logo rules above so display wins */
+.logo-dark { display: none; }
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: block; }
+
 .main-nav ul { display: flex; align-items: center; gap: var(--space-6); }
 .main-nav a {
   font-size: 0.92rem;
@@ -935,6 +940,53 @@ svg { display: block; }
   padding-top: var(--space-4);
 }
 
+/* Single announcement: centred, same width as the single project card */
+.news-grid.is-single { display: flex; justify-content: center; }
+.news-grid.is-single .news-card { width: 100%; max-width: 640px; }
+.news-meta { align-items: center; }
+.news-card:hover .project-view { transform: translateX(3px); }
+
+/* Brand cover — the DIAH logo on its light ground, not a stock image */
+.news-cover.is-brand,
+.mc-cover.is-brand {
+  --cover-gradient: linear-gradient(135deg, #FAFAF8, #ECEAE1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.is-brand .news-cover-grid {
+  background-image: radial-gradient(rgba(27,42,91,0.45) 1px, transparent 1px);
+  opacity: 0.3;
+}
+.brand-lockup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+.brand-lockup img {
+  width: clamp(130px, 28vw, 220px);
+  height: auto;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.news-card:hover .brand-lockup img { transform: scale(1.05); }
+.brand-rule { width: 44px; height: 2px; border-radius: 2px; background: var(--gold); }
+.brand-chip {
+  position: absolute;
+  left: var(--space-5);
+  bottom: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1B2A5B;
+  border: 1px solid rgba(27,42,91,0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
 /* ---------- Contact ---------- */
 .contact-layout {
   max-width: 760px;
@@ -1175,6 +1227,11 @@ svg { display: block; }
 
 .mc-status-block { background: var(--bg-alt); border-radius: var(--radius-md); padding: var(--space-6); }
 .mc-status-block h4 { color: var(--text); font-size: 0.95rem; text-transform: none; letter-spacing: normal; font-family: var(--font-display); font-weight: 600; }
+
+/* News article (modal) */
+.mc-article { max-width: 62ch; }
+.mc-article p + p { margin-top: var(--space-4); }
+.mc-closing { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 2vw, 1.3rem); padding-top: var(--space-5); border-top: 1px solid var(--border); max-width: 62ch; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

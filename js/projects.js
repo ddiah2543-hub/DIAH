@@ -37,7 +37,7 @@ const projectsData = {
         "Comparação de opções",
         "Reservas",
         "Pagamento na aplicação ou no estabelecimento, quando aplicável",
-        "Validação através de QR/code"
+        "Validação através de código/QR"
       ],
       forBusinesses: [
         "Receção de pedidos próximos",
@@ -45,9 +45,9 @@ const projectsData = {
         "Resposta aos pedidos",
         "Gestão de reservas",
         "Actualização de produtos/serviços",
-        "Validação através de QR/code"
+        "Validação através de código/QR"
       ],
-      capabilities: ["Location-based services", "Real-time availability", "Reservations", "QR validation", "Payments", "Business management", "Multi-service architecture"],
+      capabilities: ["Serviços baseados na localização", "Disponibilidade em tempo real", "Reservas", "Validação por QR", "Pagamentos", "Gestão de negócios", "Arquitectura multi-serviço"],
       statusText: "O AkiTem+ encontra-se actualmente em fase de desenvolvimento e validação, com implementação progressiva dos diferentes módulos e funcionalidades da plataforma."
     }
   ],

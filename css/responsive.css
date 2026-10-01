@@ -59,6 +59,7 @@
   .modal-panel { margin-top: 0; max-height: 100vh; height: 100vh; border-radius: 0; width: 100vw; }
   .modal-body { padding-inline: var(--space-5); }
   .mc-columns { grid-template-columns: 1fr; gap: var(--space-6); }
+  .mc-cover.is-brand { aspect-ratio: 16/9; }
 
   .back-to-top { right: var(--space-4); bottom: var(--space-4); width: 42px; height: 42px; }
 

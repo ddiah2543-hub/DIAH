@@ -236,6 +236,11 @@
   /* ------------------------------------------------------------ counters */
 
   function initCounters() {
+    // Derived stats: count comes from the data that renders the section itself.
+    document.querySelectorAll('.stat-num[data-count-source="projects"]').forEach((el) => {
+      el.dataset.count = (projectsData.pt || []).length;
+    });
+
     const nums = document.querySelectorAll(".stat-num[data-count]");
     if (!nums.length) return;
 
@@ -470,20 +475,41 @@
     }
   }
 
-  function newsCardHTML(article, index) {
-    const gradient = NEWS_GRADIENTS[index % NEWS_GRADIENTS.length];
+  /**
+   * Cover built from the DIAH logo itself (navy + gold on the light brand
+   * ground) instead of a stock image. Used by the card and the modal.
+   */
+  function brandCoverHTML() {
     return `
-      <article class="news-card reveal is-visible" data-id="${article.id}">
-        <div class="news-cover" style="--cover-gradient:${gradient}">
-          <div class="news-cover-grid"></div>
+      <div class="news-cover-grid"></div>
+      <div class="brand-lockup">
+        <img src="assets/logo/diah-mark.png" alt="" width="382" height="108">
+        <span class="brand-rule"></span>
+      </div>
+      <span class="brand-chip">${escapeHTML(t("news.chapter"))}</span>`;
+  }
+
+  function newsCoverAttrs(cls, article, index) {
+    return article.cover === "brand"
+      ? `class="${cls} is-brand"`
+      : `class="${cls}" style="--cover-gradient:${NEWS_GRADIENTS[index % NEWS_GRADIENTS.length]}"`;
+  }
+
+  function newsCardHTML(article, index) {
+    const brand = article.cover === "brand";
+    return `
+      <article class="news-card reveal is-visible" data-id="${article.id}" tabindex="0" role="button" aria-haspopup="dialog">
+        <div ${newsCoverAttrs("news-cover", article, index)}>
+          ${brand ? brandCoverHTML() : `<div class="news-cover-grid"></div>`}
         </div>
         <div class="news-body">
           <span class="news-category">${escapeHTML(article.category)}</span>
           <h3>${escapeHTML(article.title)}</h3>
           <p>${escapeHTML(article.summary)}</p>
           <div class="news-meta">
-            <span>${escapeHTML(article.author)}</span>
-            <span>${formatDate(article.date)}</span>
+            <span class="project-status"><i></i>${escapeHTML(article.type)}</span>
+            ${article.date ? `<span>${formatDate(article.date)}</span>` : ""}
+            <span class="project-view">${escapeHTML(t("news.readmore"))} &rarr;</span>
           </div>
         </div>
       </article>`;
@@ -492,6 +518,7 @@
   function renderNews() {
     const grid = document.getElementById("newsGrid");
     const list = newsData[state.lang] || newsData.pt;
+    grid.classList.toggle("is-single", list.length === 1);
     grid.innerHTML = list.map(newsCardHTML).join("");
   }
 
@@ -500,27 +527,37 @@
     const index = list.findIndex((a) => a.id === id);
     const article = list[index];
     if (!article) return;
-    const gradient = NEWS_GRADIENTS[index % NEWS_GRADIENTS.length];
+    const brand = article.cover === "brand";
 
     document.getElementById("newsModalBody").innerHTML = `
-      <div class="mc-cover" style="--cover-gradient:${gradient}"></div>
+      <div ${newsCoverAttrs("mc-cover", article, index)}>
+        ${brand ? brandCoverHTML() : ""}
+      </div>
       <span class="mc-tag">${escapeHTML(article.category)}</span>
       <h3 class="mc-title">${escapeHTML(article.title)}</h3>
-      <div class="mc-meta">
-        <span>${escapeHTML(article.author)}</span>
-        <span>${formatDate(article.date)}</span>
+      ${article.tagline ? `<p class="mc-tagline">${escapeHTML(article.tagline)}</p>` : ""}
+      <span class="mc-badge"><i></i>${escapeHTML(article.type)}</span>
+      ${article.date ? `<div class="mc-meta"><span>${formatDate(article.date)}</span></div>` : ""}
+      <div class="mc-section mc-article">
+        ${(article.body || [article.summary]).map((p) => `<p>${escapeHTML(p)}</p>`).join("")}
       </div>
-      <div class="mc-section">
-        <p>${escapeHTML(article.summary)}</p>
-      </div>`;
+      ${article.closing ? `<p class="mc-closing">${escapeHTML(article.closing)}</p>` : ""}`;
 
     openModal(document.getElementById("newsModal"));
   }
 
   function initNews() {
-    document.getElementById("newsGrid").addEventListener("click", (e) => {
+    const grid = document.getElementById("newsGrid");
+    grid.addEventListener("click", (e) => {
       const card = e.target.closest(".news-card");
       if (card) openNewsModal(card.dataset.id);
+    });
+    grid.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const card = e.target.closest(".news-card");
+      if (!card) return;
+      e.preventDefault();
+      openNewsModal(card.dataset.id);
     });
     renderNews();
   }

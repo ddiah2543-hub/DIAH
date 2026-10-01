@@ -32,12 +32,12 @@ diah/
 Edit [js/projects.js](js/projects.js). `projectsData` has one array per language (`pt`, `en`, `fr`) — add the **same project** (same `id`) to all three arrays, translated. `category` must be one of: `software`, `web`, `mobile`, `systems`, `consulting`, `automation` (it drives the portfolio filters and cover color). Leave `image: null` to keep the generated abstract cover, or set `image: "assets/images/your-file.jpg"` once real photography exists (you'll then need to swap the generated `.project-cover` div in `js/main.js` → `projectCardHTML()` / `openProjectModal()` for an `<img>`).
 
 ### News & Insights
-Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages, `date` in `YYYY-MM-DD`.
+Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages. `date` (`YYYY-MM-DD`) is optional — leave it out rather than invent one. `cover: "brand"` uses the DIAH logo cover; a single article is centred automatically.
 
 ### Services, workshops, process, tech stack, stats
 These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. The **Technology** section (frontend/backend/mobile/database/cloud lists) is plain `<li>` text in `index.html` — those are placeholders, replace with DIAH's real stack directly in the markup.
 
-Stats (`+120 Projectos`, etc.) use `data-count="120"` on `.stat-num` elements in `index.html` — placeholders, update the numbers directly.
+Stats use `data-count` on `.stat-num` elements in `index.html`. The Projectos stat has `data-count-source="projects"` and is computed at load from `projectsData.pt.length` (`js/projects.js`) — adding/removing a project updates it automatically. The other stats are static numbers; update them directly.
 
 ### Translations
 [js/translations.js](js/translations.js) exports `translations = { pt: {...}, en: {...}, fr: {...} }`. Any element with `data-i18n="some.key"` gets its `textContent` replaced on language switch; `data-i18n-attr="content:meta.description"` translates an attribute instead (format `attr:key`, `;`-separated for more than one). Portuguese is the default/fallback language.
