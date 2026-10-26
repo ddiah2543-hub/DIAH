@@ -19,10 +19,6 @@
   .consulting-layout,
   .about-layout { grid-template-columns: 1fr; gap: var(--space-7); }
 
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(2n+1) { border-left: none; }
-  .stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
-
   .footer-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-brand { grid-column: 1 / -1; }
 }
@@ -49,8 +45,6 @@
   .workshops-grid { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: 1fr; }
 
-  .stats-bar { grid-template-columns: 1fr 1fr; }
-
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 
@@ -71,7 +65,9 @@
   .tech-grid { grid-template-columns: 1fr 1fr; }
   .workshops-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat { border-left: none; }
+  .stat + .stat { border-top: 1px solid var(--border); }
   .header-controls { gap: var(--space-2); }
   .lang-btn { padding: 0.28rem 0.42rem; }
 }

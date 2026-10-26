@@ -26,10 +26,6 @@
   --gold: #D4A72C;
   --gold-rgb: 212, 167, 44;
 
-  --future-bg: #0B0B12;
-  --future-text: #F4F4F8;
-  --future-muted: rgba(244, 244, 248, 0.62);
-  --future-border: rgba(244, 244, 248, 0.14);
 
   --success: #1E9E6B;
 
@@ -793,47 +789,6 @@ svg { display: block; }
 .consulting-list li:hover { padding-left: var(--space-3); color: var(--accent); }
 .consulting-index { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); }
 
-/* ---------- AI / Innovation ---------- */
-.section-future {
-  background: var(--future-bg);
-  color: var(--future-text);
-  overflow: hidden;
-  position: relative;
-}
-.section-future .eyebrow { color: #A9B4FF; }
-.section-future .eyebrow::before { background: #A9B4FF; }
-.section-future .section-title { color: var(--future-text); }
-.section-future .section-note { color: var(--future-muted); }
-
-.future-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(124,58,237,0.35), transparent 45%),
-    radial-gradient(circle at 85% 75%, rgba(52,82,255,0.35), transparent 45%);
-  animation: future-shift 14s ease-in-out infinite alternate;
-}
-@keyframes future-shift {
-  from { opacity: 0.7; transform: scale(1); }
-  to { opacity: 1; transform: scale(1.06); }
-}
-
-.future-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  position: relative;
-}
-.future-tags span {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--future-border);
-  color: var(--future-text);
-  transition: border-color var(--dur-fast), background var(--dur-fast);
-}
-.future-tags span:hover { border-color: #A9B4FF; background: rgba(169,180,255,0.1); }
-
 /* ---------- About ---------- */
 .about-layout {
   display: grid;
@@ -857,7 +812,7 @@ svg { display: block; }
 
 .stats-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   max-width: var(--container-max);

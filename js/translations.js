@@ -60,7 +60,7 @@ const translations = {
     "process.title": "Como transformamos ideias em tecnologia.",
     "process.p1.title": "Descobrir",
     "process.p1.text": "Compreendemos o problema, os utilizadores, os processos e os objectivos.",
-    "process.p2.title": "Conceber",
+    "process.p2.title": "Idealizar",
     "process.p2.text": "Definimos a arquitectura, experiência e solução tecnológica.",
     "process.p3.title": "Desenvolver",
     "process.p3.text": "Construímos, testamos e iteramos a solução.",
@@ -110,16 +110,6 @@ const translations = {
     "news.readmore": "Ler notícia",
     "news.chapter": "Capítulo 01",
 
-    "ai.eyebrow": "Inovação",
-    "ai.title": "Exploramos o que vem a seguir.",
-    "ai.text": "Tecnologia muda rapidamente. A DIAH acompanha essa mudança, experimenta novas abordagens e transforma inovação em soluções práticas.",
-    "ai.tag1": "Inteligência Artificial",
-    "ai.tag2": "IA Generativa",
-    "ai.tag3": "Automação",
-    "ai.tag4": "Dados",
-    "ai.tag5": "Cloud",
-    "ai.tag6": "Tecnologias Emergentes",
-
     "about.eyebrow": "Sobre",
     "about.title": "Somos uma empresa de tecnologia.",
     "about.text": "A DIAH desenvolve tecnologia para pessoas e organizações que procuram resolver problemas, melhorar processos e construir novas possibilidades.",
@@ -134,7 +124,6 @@ const translations = {
     "stats.projects": "Projectos",
     "stats.clients": "Clientes",
     "stats.workshops": "Workshops",
-    "stats.markets": "Mercados",
 
     "contact.eyebrow": "Contacto",
     "contact.title": "Vamos construir alguma coisa?",
@@ -143,7 +132,7 @@ const translations = {
     "contact.cta_secondary": "Agendar reunião",
     "contact.info.email": "Email",
     "contact.info.location": "Localização",
-    "contact.info.location_value": "Lisboa, Portugal",
+    "contact.info.location_value": "Luanda, Angola",
 
     "footer.tagline": "Tecnologia que transforma ideias em soluções.",
     "footer.nav_title": "Navegação",
@@ -267,16 +256,6 @@ const translations = {
     "news.readmore": "Read article",
     "news.chapter": "Chapter 01",
 
-    "ai.eyebrow": "Innovation",
-    "ai.title": "We explore what comes next.",
-    "ai.text": "Technology changes fast. DIAH keeps pace with that change, experiments with new approaches and turns innovation into practical solutions.",
-    "ai.tag1": "Artificial Intelligence",
-    "ai.tag2": "Generative AI",
-    "ai.tag3": "Automation",
-    "ai.tag4": "Data",
-    "ai.tag5": "Cloud",
-    "ai.tag6": "Emerging Technologies",
-
     "about.eyebrow": "About",
     "about.title": "We are a technology company.",
     "about.text": "DIAH builds technology for people and organisations looking to solve problems, improve processes and create new possibilities.",
@@ -291,7 +270,6 @@ const translations = {
     "stats.projects": "Projects",
     "stats.clients": "Clients",
     "stats.workshops": "Workshops",
-    "stats.markets": "Markets",
 
     "contact.eyebrow": "Contact",
     "contact.title": "Shall we build something?",
@@ -300,7 +278,7 @@ const translations = {
     "contact.cta_secondary": "Schedule a meeting",
     "contact.info.email": "Email",
     "contact.info.location": "Location",
-    "contact.info.location_value": "Lisbon, Portugal",
+    "contact.info.location_value": "Luanda, Angola",
 
     "footer.tagline": "Technology that turns ideas into solutions.",
     "footer.nav_title": "Navigation",
@@ -424,16 +402,6 @@ const translations = {
     "news.readmore": "Lire l’article",
     "news.chapter": "Chapitre 01",
 
-    "ai.eyebrow": "Innovation",
-    "ai.title": "Nous explorons ce qui vient ensuite.",
-    "ai.text": "La technologie évolue vite. DIAH suit ce mouvement, expérimente de nouvelles approches et transforme l'innovation en solutions concrètes.",
-    "ai.tag1": "Artificial Intelligence",
-    "ai.tag2": "Generative AI",
-    "ai.tag3": "Automation",
-    "ai.tag4": "Data",
-    "ai.tag5": "Cloud",
-    "ai.tag6": "Emerging Technologies",
-
     "about.eyebrow": "À propos",
     "about.title": "Nous sommes une entreprise technologique.",
     "about.text": "DIAH développe des technologies pour les personnes et les organisations qui cherchent à résoudre des problèmes, améliorer leurs processus et créer de nouvelles possibilités.",
@@ -448,7 +416,6 @@ const translations = {
     "stats.projects": "Projets",
     "stats.clients": "Clients",
     "stats.workshops": "Ateliers",
-    "stats.markets": "Marchés",
 
     "contact.eyebrow": "Contact",
     "contact.title": "On construit quelque chose ?",
@@ -457,7 +424,7 @@ const translations = {
     "contact.cta_secondary": "Planifier une réunion",
     "contact.info.email": "Email",
     "contact.info.location": "Localisation",
-    "contact.info.location_value": "Lisbonne, Portugal",
+    "contact.info.location_value": "Luanda, Angola",
 
     "footer.tagline": "La technologie qui transforme les idées en solutions.",
     "footer.nav_title": "Navigation",
