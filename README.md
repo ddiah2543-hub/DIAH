@@ -34,10 +34,10 @@ Edit [js/projects.js](js/projects.js). `projectsData` has one array per language
 ### News & Insights
 Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages. `date` (`YYYY-MM-DD`) is optional — leave it out rather than invent one. `cover: "brand"` uses the DIAH logo cover; a single article is centred automatically.
 
-### Services, workshops, process, tech stack, stats
+### Services, workshops, process, tech stack
 These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. The **Technology** section (frontend/backend/mobile/database/cloud lists) is plain `<li>` text in `index.html` — those are placeholders, replace with DIAH's real stack directly in the markup.
 
-Stats use `data-count` on `.stat-num` elements in `index.html`. The Projectos stat has `data-count-source="projects"` and is computed at load from `projectsData.pt.length` (`js/projects.js`) — adding/removing a project updates it automatically. The other stats are static numbers; update them directly.
+The "+N" stats bar (Projectos/Clientes/Workshops) was removed from the About section — it showed "+0" for clients and workshops with no real figures behind them. Reintroduce it once there are real numbers to show.
 
 ### Translations
 [js/translations.js](js/translations.js) exports `translations = { pt: {...}, en: {...}, fr: {...} }`. Any element with `data-i18n="some.key"` gets its `textContent` replaced on language switch; `data-i18n-attr="content:meta.description"` translates an attribute instead (format `attr:key`, `;`-separated for more than one). Portuguese is the default/fallback language.
@@ -45,7 +45,7 @@ Stats use `data-count` on `.stat-num` elements in `index.html`. The Projectos st
 ## Notes on the demo data
 
 - Project and article **images are intentionally `null`** — the UI generates abstract gradient covers instead, so the site looks complete before real photography exists.
-- Stats, testimonials-free counters, and project/news content are placeholders for structure and tone — not real DIAH figures. Replace before launch.
+- Project/news content is placeholder for structure and tone — not final DIAH copy. Replace before launch.
 - The Contact section has no form — "Fale connosco" and "Agendar reunião" both open a `mailto:` link.
 - Public contact email currently set to `info@diahsolutions.com`.
 

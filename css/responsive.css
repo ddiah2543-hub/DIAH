@@ -65,9 +65,6 @@
   .tech-grid { grid-template-columns: 1fr 1fr; }
   .workshops-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .stats-bar { grid-template-columns: 1fr; }
-  .stat { border-left: none; }
-  .stat + .stat { border-top: 1px solid var(--border); }
   .header-controls { gap: var(--space-2); }
   .lang-btn { padding: 0.28rem 0.42rem; }
 }

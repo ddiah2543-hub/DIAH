@@ -13,7 +13,7 @@
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const AKITEM_GRADIENT = "linear-gradient(135deg,#3452FF,#6C3CE9)";
+  const AKITEM_GRADIENT = "linear-gradient(135deg,#1B2A5B,#D4A72C)";
 
   /**
    * Concept illustration for AkiTem+: a user location pinging nearby
@@ -47,12 +47,12 @@
       </svg>`;
   }
   const NEWS_GRADIENTS = [
-    "linear-gradient(135deg,#3452FF,#6C3CE9)",
-    "linear-gradient(135deg,#0EA5E9,#3452FF)",
-    "linear-gradient(135deg,#7C3AED,#D946EF)",
-    "linear-gradient(135deg,#0F172A,#3452FF)",
-    "linear-gradient(135deg,#1E293B,#7C3AED)",
-    "linear-gradient(135deg,#059669,#0EA5E9)"
+    "linear-gradient(135deg,#1B2A5B,#D4A72C)",
+    "linear-gradient(135deg,#0F1B3D,#1B2A5B)",
+    "linear-gradient(135deg,#1B2A5B,#3C4F91)",
+    "linear-gradient(135deg,#14140F,#1B2A5B)",
+    "linear-gradient(135deg,#B6881E,#D4A72C)",
+    "linear-gradient(135deg,#1B2A5B,#6B7FBE)"
   ];
   const LOCALE_MAP = { pt: "pt-PT", en: "en-GB", fr: "fr-FR" };
 
@@ -231,49 +231,6 @@
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     otherEls.forEach((el) => observer.observe(el));
-  }
-
-  /* ------------------------------------------------------------ counters */
-
-  function initCounters() {
-    // Derived stats: count comes from the data that renders the section itself.
-    document.querySelectorAll('.stat-num[data-count-source="projects"]').forEach((el) => {
-      el.dataset.count = (projectsData.pt || []).length;
-    });
-
-    const nums = document.querySelectorAll(".stat-num[data-count]");
-    if (!nums.length) return;
-
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-      nums.forEach((el) => (el.textContent = el.dataset.count));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.4 }
-    );
-    nums.forEach((el) => observer.observe(el));
-  }
-
-  function animateCount(el) {
-    const target = parseInt(el.dataset.count, 10) || 0;
-    const duration = 1400;
-    const start = performance.now();
-
-    function frame(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased);
-      if (progress < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
   }
 
   /* -------------------------------------------------------------- cursor */
@@ -592,7 +549,6 @@
     initHeader();
     initMobileNav();
     initReveal();
-    initCounters();
     initCursor();
     initBackToTop();
     initModals();

@@ -133,7 +133,7 @@ const projectsData = {
         "Mise à jour des produits/services",
         "Validation par QR/code"
       ],
-      capabilities: ["Location-based services", "Real-time availability", "Reservations", "QR validation", "Payments", "Business management", "Multi-service architecture"],
+      capabilities: ["Services basés sur la localisation", "Disponibilité en temps réel", "Réservations", "Validation par QR", "Paiements", "Gestion des commerces", "Architecture multi-services"],
       statusText: "AkiTem+ est actuellement en phase de développement et de validation, avec un déploiement progressif des différents modules et fonctionnalités de la plateforme."
     }
   ]
