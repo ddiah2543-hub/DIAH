@@ -440,7 +440,7 @@
     return `
       <div class="news-cover-grid"></div>
       <div class="brand-lockup">
-        <img src="assets/logo/diah-mark.png" alt="" width="382" height="108">
+        <img src="assets/logo/diah-logo-full.svg" alt="" width="220" height="87">
         <span class="brand-rule"></span>
       </div>
       <span class="brand-chip">${escapeHTML(t("news.chapter"))}</span>`;

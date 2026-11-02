@@ -61,7 +61,7 @@
   --dur-mid: 0.4s;
   --dur-slow: 0.9s;
 
-  --header-h: 76px;
+  --header-h: 84px;
 
   color-scheme: light;
 }
@@ -290,8 +290,9 @@ svg { display: block; }
   width: 100%;
 }
 
-.logo { display: inline-flex; align-items: center; }
-.logo-mark-img { height: 36px; width: auto; display: block; }
+.logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+/* Never below 160px: the gold details in the lockup get too tight */
+.logo-mark-img { width: 160px; height: auto; display: block; }
 
 .footer-logo-img { width: 100%; max-width: 180px; height: auto; display: block; }
 
@@ -396,6 +397,8 @@ svg { display: block; }
   font-family: var(--font-display);
   font-size: 1.2rem;
 }
+.mobile-lang-switch { display: none; width: fit-content; margin-bottom: var(--space-5); }
+.mobile-lang-switch .lang-btn { font-size: 0.85rem; padding: 0.55rem 0.95rem; }
 .mobile-nav-backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.4);
@@ -889,7 +892,7 @@ svg { display: block; }
   gap: var(--space-4);
 }
 .brand-lockup img {
-  width: clamp(130px, 28vw, 220px);
+  width: clamp(160px, 28vw, 220px);
   height: auto;
   transition: transform var(--dur-slow) var(--ease);
 }
