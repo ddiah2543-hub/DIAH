@@ -3,14 +3,15 @@
    Breakpoints: 1100px (tablet/laptop), 760px (mobile), 420px (small phones)
    ========================================================================== */
 
-/* Full nav + controls only fit above this width in the longest language (FR/PT) */
-@media (max-width: 1240px) {
+/* Full nav + controls fit down to ~960px in every language; collapse below 1024 */
+@media (max-width: 1023px) {
   .main-nav { display: none; }
   .menu-toggle { display: flex; }
 }
 
 /* ---------- ≤1100px : tablet / small laptop ---------- */
 @media (max-width: 1100px) {
+  .hero-bg { --grid-cell: 64px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .tech-grid { grid-template-columns: repeat(3, 1fr); row-gap: var(--space-7); }
   .process-timeline { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-8); }
@@ -34,10 +35,10 @@
   .section { padding-block: var(--space-8); }
 
   .hero { min-height: auto; padding-bottom: var(--space-9); }
+  .hero-bg { --grid-cell: 48px; }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .hero-cta .btn { width: 100%; }
-  .hero-title-brand { letter-spacing: 0.35em; }
-  .hero-caps { margin-top: var(--space-4); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.12em; }
 
   .nav-cta { display: none; }
 

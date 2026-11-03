@@ -28,12 +28,21 @@
 
     <nav class="main-nav" id="mainNav" aria-label="Navegação principal" data-i18n-attr="aria-label:a11y.mainNav">
       <ul>
-        <li><a href="#services" data-i18n="nav.services">Serviços</a></li>
-        <li><a href="#technology" data-i18n="nav.technology">Tecnologia</a></li>
-        <li><a href="#process" data-i18n="nav.process">Processo</a></li>
+        <li class="nav-dropdown-item" id="navServices">
+          <a href="#services" data-i18n="nav.services">Serviços</a>
+          <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="servicesMenu" aria-label="Abrir submenu de Serviços" data-i18n-attr="aria-label:nav.services_submenu">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown" id="servicesMenu">
+            <ul>
+              <li><a href="#technology"><span class="nav-dropdown-title" data-i18n="nav.technology">Tecnologia</span><span class="nav-dropdown-desc" data-i18n="nav.technology_desc">As tecnologias com que construímos</span></a></li>
+              <li><a href="#process"><span class="nav-dropdown-title" data-i18n="nav.process">Processo</span><span class="nav-dropdown-desc" data-i18n="nav.process_desc">Como trabalhamos, da ideia ao lançamento</span></a></li>
+              <li><a href="#workshops"><span class="nav-dropdown-title" data-i18n="nav.workshops">Workshops</span><span class="nav-dropdown-desc" data-i18n="nav.workshops_desc">Formação prática para equipas</span></a></li>
+              <li><a href="#consulting"><span class="nav-dropdown-title" data-i18n="nav.consulting">Consultoria</span><span class="nav-dropdown-desc" data-i18n="nav.consulting_desc">Apoio a decisões tecnológicas</span></a></li>
+            </ul>
+          </div>
+        </li>
         <li><a href="#projects" data-i18n="nav.projects">Projectos</a></li>
-        <li><a href="#workshops" data-i18n="nav.workshops">Workshops</a></li>
-        <li><a href="#consulting" data-i18n="nav.consulting">Consultoria</a></li>
         <li><a href="#news" data-i18n="nav.news">Notícias</a></li>
         <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
       </ul>
@@ -64,12 +73,23 @@
     <button type="button" class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
   </div>
   <ul>
-    <li><a href="#services" data-i18n="nav.services">Serviços</a></li>
-    <li><a href="#technology" data-i18n="nav.technology">Tecnologia</a></li>
-    <li><a href="#process" data-i18n="nav.process">Processo</a></li>
+    <li>
+      <div class="mobile-nav-row">
+        <a href="#services" data-i18n="nav.services">Serviços</a>
+        <button type="button" class="mobile-sub-toggle" aria-expanded="false" aria-controls="mobileServicesMenu" aria-label="Abrir submenu de Serviços" data-i18n-attr="aria-label:nav.services_submenu">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-sub" id="mobileServicesMenu">
+        <ul>
+          <li><a href="#technology" data-i18n="nav.technology">Tecnologia</a></li>
+          <li><a href="#process" data-i18n="nav.process">Processo</a></li>
+          <li><a href="#workshops" data-i18n="nav.workshops">Workshops</a></li>
+          <li><a href="#consulting" data-i18n="nav.consulting">Consultoria</a></li>
+        </ul>
+      </div>
+    </li>
     <li><a href="#projects" data-i18n="nav.projects">Projectos</a></li>
-    <li><a href="#workshops" data-i18n="nav.workshops">Workshops</a></li>
-    <li><a href="#consulting" data-i18n="nav.consulting">Consultoria</a></li>
     <li><a href="#news" data-i18n="nav.news">Notícias</a></li>
     <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
@@ -82,44 +102,25 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true">
-      <svg class="hero-grid" viewBox="0 0 1200 800" preserveAspectRatio="none"><defs><pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="currentColor" stroke-width="0.6"/></pattern></defs><rect width="1200" height="800" fill="url(#gridPattern)"/></svg>
-      <svg class="hero-nodes" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-        <g class="node-links" stroke="currentColor" stroke-width="1" fill="none">
-          <line x1="180" y1="160" x2="420" y2="260"/>
-          <line x1="420" y1="260" x2="700" y2="180"/>
-          <line x1="420" y1="260" x2="520" y2="460"/>
-          <line x1="700" y1="180" x2="960" y2="300"/>
-          <line x1="520" y1="460" x2="800" y2="520"/>
-          <line x1="800" y1="520" x2="1020" y2="420"/>
-          <line x1="960" y1="300" x2="1020" y2="420"/>
-          <line x1="180" y1="160" x2="120" y2="380"/>
-          <line x1="120" y1="380" x2="520" y2="460"/>
-        </g>
-        <g class="node-dots" fill="currentColor">
-          <circle cx="180" cy="160" r="4"/>
-          <circle cx="420" cy="260" r="5.5"/>
-          <circle cx="700" cy="180" r="4"/>
-          <circle cx="960" cy="300" r="4.5"/>
-          <circle cx="520" cy="460" r="5.5"/>
-          <circle cx="800" cy="520" r="4"/>
-          <circle cx="1020" cy="420" r="4.5"/>
-          <circle cx="120" cy="380" r="3.5"/>
-        </g>
-      </svg>
-      <div class="hero-glow"></div>
+      <div class="hero-net-layer">
+        <div class="hero-blob hero-blob-left"></div>
+        <div class="hero-blob hero-blob-right"></div>
+        <div class="hero-grid"></div>
+        <canvas class="hero-network" id="heroNetwork"></canvas>
+      </div>
     </div>
 
     <div class="container hero-inner">
+      <p class="hero-eyebrow" data-reveal data-i18n="hero.pillars">SOFTWARE · AUTOMAÇÃO · DADOS &amp; IA</p>
       <h1 class="hero-title" data-reveal>
-        <span class="hero-title-brand">DIAH</span>
-        <span class="hero-title-tagline" data-i18n="hero.tagline">Transformamos desafios de negócio em soluções digitais simples.</span>
+        <span class="visually-hidden" data-i18n="hero.tagline_sr">Transformamos desafios de negócio em soluções digitais simples e eficientes.</span>
+        <span class="hero-title-tagline" id="heroTagline" aria-hidden="true"><span class="hero-tagline-before">Transformamos desafios de negócio em soluções</span> <br class="hero-word-break" hidden><span class="hero-word-wrap"><span class="hero-tagline-lead">digitais </span><span class="hero-word">simples</span><span class="hero-cursor"></span><span class="hero-tagline-tail">.</span></span><span class="hero-tagline-rest"></span></span>
       </h1>
       <p class="hero-text" data-reveal data-i18n="hero.text">A DIAH combina software, automação, dados e consultoria tecnológica para ajudar organizações a trabalhar melhor, mais rápido e de forma mais inteligente.</p>
       <div class="hero-cta" data-reveal>
         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Falar connosco</a>
         <a href="#about" class="btn btn-ghost" data-i18n="hero.cta_secondary">Conhecer a DIAH</a>
       </div>
-      <p class="hero-caps" data-reveal data-i18n="hero.caps">Software · Automação · Dados &amp; IA · Consultoria Tecnológica</p>
     </div>
 
     <a href="#services" class="scroll-indicator" data-reveal data-i18n-attr="aria-label:hero.scroll" aria-label="Descer">
