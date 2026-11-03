@@ -13,7 +13,7 @@
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const AKITEM_GRADIENT = "linear-gradient(135deg,#1B2A5B,#D4A72C)";
+  const AKITEM_GRADIENT = "linear-gradient(135deg,#0B2545,#E3B458)";
 
   /**
    * Concept illustration for AkiTem+: a user location pinging nearby
@@ -47,12 +47,12 @@
       </svg>`;
   }
   const NEWS_GRADIENTS = [
-    "linear-gradient(135deg,#1B2A5B,#D4A72C)",
-    "linear-gradient(135deg,#0F1B3D,#1B2A5B)",
-    "linear-gradient(135deg,#1B2A5B,#3C4F91)",
-    "linear-gradient(135deg,#14140F,#1B2A5B)",
-    "linear-gradient(135deg,#B6881E,#D4A72C)",
-    "linear-gradient(135deg,#1B2A5B,#6B7FBE)"
+    "linear-gradient(135deg,#0B2545,#E3B458)",
+    "linear-gradient(135deg,#0A1B33,#0B2545)",
+    "linear-gradient(135deg,#0B2545,#3C4F91)",
+    "linear-gradient(135deg,#14140F,#0B2545)",
+    "linear-gradient(135deg,#B6881E,#E3B458)",
+    "linear-gradient(135deg,#0B2545,#6B7FBE)"
   ];
   const LOCALE_MAP = { pt: "pt-PT", en: "en-GB", fr: "fr-FR" };
 

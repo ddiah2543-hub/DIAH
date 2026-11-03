@@ -11,6 +11,7 @@ Just open [index.html](index.html) directly, or serve the folder with any static
 ```
 diah/
 ├── index.html          all markup, single page
+├── favicon.ico         root favicon (16/32/48px)
 ├── css/
 │   ├── style.css        design tokens (CSS variables) + component styles
 │   └── responsive.css   breakpoints: 1100px / 760px / 420px
@@ -22,7 +23,7 @@ diah/
 ├── assets/
 │   ├── images/          project & article photography (currently empty — see below)
 │   ├── icons/            standalone icon assets, if needed beyond inline SVG
-│   └── logo/             DIAH logo + favicon (SVG)
+│   └── logo/             navbar logo (DIAH), full logo (DIAH Solutions), favicon.svg, app icons
 └── README.md
 ```
 

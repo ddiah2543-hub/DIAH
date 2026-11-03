@@ -16,16 +16,21 @@
   --border: rgba(20, 20, 15, 0.12);
   --border-strong: rgba(20, 20, 15, 0.22);
 
-  --accent: #1B2A5B;
-  --accent-rgb: 27, 42, 91;
+  /* Gold has poor contrast on light grounds: light mode uses navy for text/icons */
+  --accent: #0B2545;
+  --accent-rgb: 11, 37, 69;
+  --accent-hover: #1A3A63;
   --accent-2: #B6881E;
   --accent-2-rgb: 182, 136, 30;
-  --accent-soft: rgba(27, 42, 91, 0.08);
+  --accent-soft: rgba(11, 37, 69, 0.08);
   --accent-contrast: #FFFFFF;
 
-  --gold: #D4A72C;
-  --gold-rgb: 212, 167, 44;
+  --gold: #E3B458;
+  --gold-rgb: 227, 180, 88;
 
+  /* Large decorative hero graphic, kept separate from --accent */
+  --hero-accent: #0B2545;
+  --hero-accent-rgb: 11, 37, 69;
 
   --success: #1E9E6B;
 
@@ -78,12 +83,16 @@
     --border: rgba(255, 255, 255, 0.1);
     --border-strong: rgba(255, 255, 255, 0.18);
 
-    --accent: #7C93FF;
-    --accent-rgb: 124, 147, 255;
+    --accent: #E3B458;
+    --accent-rgb: 227, 180, 88;
+    --accent-hover: #EEC873;
     --accent-2: #E0BB54;
     --accent-2-rgb: 224, 187, 84;
-    --accent-soft: rgba(124, 147, 255, 0.14);
-    --accent-contrast: #0A0A0C;
+    --accent-soft: rgba(227, 180, 88, 0.14);
+    --accent-contrast: #0A1B33;
+
+    --hero-accent: #7C93FF;
+    --hero-accent-rgb: 124, 147, 255;
 
     color-scheme: dark;
   }
@@ -100,12 +109,16 @@
   --border: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.18);
 
-  --accent: #7C93FF;
-  --accent-rgb: 124, 147, 255;
+  --accent: #E3B458;
+  --accent-rgb: 227, 180, 88;
+  --accent-hover: #EEC873;
   --accent-2: #E0BB54;
   --accent-2-rgb: 224, 187, 84;
-  --accent-soft: rgba(124, 147, 255, 0.14);
-  --accent-contrast: #0A0A0C;
+  --accent-soft: rgba(227, 180, 88, 0.14);
+  --accent-contrast: #0A1B33;
+
+  --hero-accent: #7C93FF;
+  --hero-accent-rgb: 124, 147, 255;
 
   color-scheme: dark;
 }
@@ -180,7 +193,7 @@ svg { display: block; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -218,7 +231,7 @@ svg { display: block; }
   background: var(--accent);
   color: var(--accent-contrast);
 }
-.btn-primary:hover { background: var(--gold); color: #14140F; }
+.btn-primary:hover { background: var(--accent-hover); color: var(--accent-contrast); }
 
 .btn-ghost {
   border-color: var(--border-strong);
@@ -291,17 +304,17 @@ svg { display: block; }
 }
 
 .logo { display: inline-flex; align-items: center; flex-shrink: 0; }
-/* Never below 160px: the gold details in the lockup get too tight */
-.logo-mark-img { width: 160px; height: auto; display: block; }
+.logo-mark-img { height: 34px; width: auto; display: block; }
 
-.footer-logo-img { width: 100%; max-width: 180px; height: auto; display: block; }
+/* Full lockup: never below 140px */
+.footer-logo-img { width: 180px; min-width: 140px; max-width: 100%; height: auto; display: block; }
 
 /* Theme-specific logo variants — must follow the logo rules above so display wins */
 .logo-dark { display: none; }
 :root[data-theme="dark"] .logo-light { display: none; }
 :root[data-theme="dark"] .logo-dark { display: block; }
 
-.main-nav ul { display: flex; align-items: center; gap: var(--space-6); }
+.main-nav ul { display: flex; align-items: center; gap: var(--space-5); }
 .main-nav a {
   font-size: 0.92rem;
   color: var(--text-muted);
@@ -424,7 +437,7 @@ svg { display: block; }
 .hero-grid { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.6; }
 .hero-nodes {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  color: var(--accent);
+  color: var(--hero-accent);
   opacity: 0.55;
   animation: hero-float 16s ease-in-out infinite;
 }
@@ -452,7 +465,7 @@ svg { display: block; }
   top: -20%; right: -10%;
   width: 60vw; height: 60vw;
   max-width: 900px; max-height: 900px;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(var(--hero-accent-rgb), 0.16), transparent 70%);
   filter: blur(10px);
 }
 
@@ -881,7 +894,7 @@ svg { display: block; }
   overflow: hidden;
 }
 .is-brand .news-cover-grid {
-  background-image: radial-gradient(rgba(27,42,91,0.45) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(11,37,69,0.45) 1px, transparent 1px);
   opacity: 0.3;
 }
 .brand-lockup {
@@ -897,7 +910,8 @@ svg { display: block; }
   transition: transform var(--dur-slow) var(--ease);
 }
 .news-card:hover .brand-lockup img { transform: scale(1.05); }
-.brand-rule { width: 44px; height: 2px; border-radius: 2px; background: var(--gold); }
+/* Light ground in both themes, so the logo's own deep gold, not #E3B458 */
+.brand-rule { width: 44px; height: 2px; border-radius: 2px; background: #A97416; }
 .brand-chip {
   position: absolute;
   left: var(--space-5);
@@ -906,8 +920,8 @@ svg { display: block; }
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #1B2A5B;
-  border: 1px solid rgba(27,42,91,0.2);
+  color: #0B2545;
+  border: 1px solid rgba(11,37,69,0.2);
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
 }
