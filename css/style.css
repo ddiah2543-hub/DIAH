@@ -852,12 +852,11 @@ svg { display: block; }
 /* ---------- About ---------- */
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: var(--space-9);
+  grid-template-columns: min(440px, 36%) minmax(0, 1fr);
+  gap: clamp(3rem, 6.67vw, 6rem);
   align-items: start;
 }
-/* Desktop: the intro stays in view while a long answer is open, instead of
-   leaving an empty column on the left. */
+/* Desktop: the short intro stays beside the taller panel while scrolling */
 .about-intro {
   position: sticky;
   top: calc(var(--header-h) + var(--space-6));
@@ -865,88 +864,191 @@ svg { display: block; }
 .about-text {
   margin-top: var(--space-4);
   max-width: 36ch;
-  font-size: 1.15rem;
+  font-size: 1.1875rem;
   line-height: 1.6;
   color: var(--text-muted);
 }
-
-/* Q&A accordion: thin rules between items, no cards */
-.faq-item { border-top: 1px solid var(--border); }
-.faq-item:last-child { border-bottom: 1px solid var(--border); }
-.faq-q button {
-  scroll-margin-top: calc(var(--header-h) + var(--space-4));
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  width: 100%;
-  min-height: 44px;
-  padding: var(--space-5) 0;
-  text-align: left;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: color-mix(in srgb, var(--text) 88%, var(--bg));
-  transition: color var(--dur-fast) var(--ease-soft);
-}
-.faq-q button:hover { color: var(--text); }
-.faq-item.is-open .faq-q button { color: var(--text); }
-.faq-q-text { flex: 1; padding-right: 4px; }
-/* Dot and icon are centred on the first line (line-height 1.4 = 1.4em), so a
-   wrapped question keeps them beside its opening words. */
-/* Marker: navy (cream in dark, where navy disappears) when closed, gold when open */
-.faq-dot {
-  margin-top: calc(0.7em - 3px);
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--hero-accent);
-  flex-shrink: 0;
-  transition: background var(--dur-mid) var(--ease-soft);
-}
-.faq-item.is-open .faq-dot { background: var(--logo-gold); }
-.faq-icon {
+.about-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin-top: calc(0.7em - 14px);
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--text) 32%, transparent);
-  flex-shrink: 0;
+  gap: 0.4em;
+  min-height: 44px;
+  margin-top: var(--space-4);
+  position: relative;
+  font-weight: 600;
+  color: var(--hero-accent);
 }
-.faq-icon-v { transform-origin: center; transition: transform var(--dur-mid) var(--ease); }
-.faq-item.is-open .faq-icon-v { transform: scaleY(0); }
+/* One continuous rule under the text and the arrow */
+.about-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 4px;
+  height: 1px;
+  background: currentColor;
+  transition: height var(--dur-fast) var(--ease-soft);
+}
+.about-link:hover::after { height: 2px; }
 
-.faq-a {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  visibility: hidden;
-  transition: grid-template-rows 0.22s var(--ease-soft), opacity 0.22s var(--ease-soft), visibility 0s linear 0.22s;
-}
-.faq-item.is-open .faq-a {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  visibility: visible;
-  transition: grid-template-rows 0.22s var(--ease-soft), opacity 0.22s var(--ease-soft), visibility 0s;
-}
-.faq-a-inner { overflow: hidden; min-height: 0; }
-/* Answer lines up with the question text (dot 6px + 14px gap), not the dot */
-.faq-a-inner > * { margin-left: 20px; margin-right: 42px; max-width: 65ch; }
-.faq-a-inner > :last-child { margin-bottom: var(--space-5); }
-.faq-a p { color: var(--text-muted); line-height: 1.6; }
-.faq-a p + p { margin-top: var(--space-3); }
-.faq-a .faq-lead { color: var(--text); font-weight: 500; }
-.faq-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-3); }
-.faq-tags li {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.65rem;
+/* Panel with tabs */
+.about-panel {
+  background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: var(--space-6);
+}
+/* Segmented control */
+.about-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: var(--space-6);
   border-radius: var(--radius-pill);
-  background: rgba(var(--hero-accent-rgb), 0.04);
+  background: color-mix(in srgb, var(--text) 6%, var(--surface));
+}
+.about-tabs [role="tab"] {
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-soft), color var(--dur-fast) var(--ease-soft);
+}
+.about-tabs [role="tab"]:not([aria-selected="true"]):hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+}
+.about-tabs [role="tab"][aria-selected="true"] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Panels share one grid cell; hidden ones keep their space (invisible and out of
+   the accessibility tree), so switching tabs never changes the panel height. */
+.about-panels { display: grid; grid-template-columns: minmax(0, 1fr); }
+.about-tabpanel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.18s var(--ease-soft);
+}
+.about-tabpanel[hidden] {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+}
+.about-tabpanel:focus-visible { outline-offset: 6px; border-radius: var(--radius-sm); }
+.about-panel-text { color: var(--text-muted); line-height: 1.6; max-width: 65ch; }
+.about-panel-text + .about-panel-text { margin-top: var(--space-3); }
+
+/* Processo: intro line, then four steps in columns, each under a 2px rule
+   (navy; gold for the last), no boxes */
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+  margin-top: var(--space-5);
+}
+.about-step {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--hero-accent);
+}
+.about-step:last-child { border-top-color: var(--logo-gold); }
+.about-step h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+.about-step p { font-size: 0.94rem; line-height: 1.55; color: var(--text-muted); }
+
+/* Tecnologias: one row of logo tiles scrolling right to left in a loop (the
+   track holds the list twice and moves by half its width). Pauses on hover or
+   focus and while the tab is hidden; with reduced motion it is a plain
+   scrollable row. */
+.tech-marquee {
+  margin-top: var(--space-5);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.tech-track {
+  display: flex;
+  width: max-content;
+  animation: tech-scroll 32s linear infinite;
+}
+.tech-marquee:hover .tech-track,
+.tech-marquee:focus-within .tech-track,
+.about-tabpanel[hidden] .tech-track { animation-play-state: paused; }
+@keyframes tech-scroll { to { transform: translateX(-50%); } }
+.tech-list {
+  display: flex;
+  gap: var(--space-3);
+  padding-right: var(--space-3);
+}
+.tech-tile {
+  flex: 0 0 auto;
+  width: 136px;
+  min-height: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) 0.85rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: border-color var(--dur-fast) var(--ease-soft);
+}
+.tech-tile svg {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  fill: currentColor;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-soft);
+}
+/* Brand colour on hover; on the light theme, logos too pale for a light tile
+   (JavaScript, Vue) use a darker shade of their colour (--brand-light). */
+.tech-tile { --brand-hover: var(--brand-light, var(--brand)); }
+:root[data-theme="dark"] .tech-tile { --brand-hover: var(--brand); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tech-tile { --brand-hover: var(--brand); }
+}
+.tech-tile:hover { border-color: color-mix(in srgb, var(--text) 35%, transparent); }
+.tech-tile:hover svg { color: var(--brand-hover); }
+
+/* Prazos: lead line, range visual, then the text */
+.about-lead {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.time-range {
+  margin: var(--space-5) 0;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.time-range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
   color: var(--text-muted);
 }
+.time-range-bar { height: 10px; border-radius: var(--radius-pill); background: var(--hero-accent); }
+.time-range-ticks { display: flex; justify-content: space-between; margin-top: var(--space-2); }
+.time-range-ticks i { width: 2px; height: 12px; border-radius: 1px; background: color-mix(in srgb, var(--text) 35%, transparent); }
+.time-range-ticks i:first-child { background: var(--logo-gold); }
+.time-range-caption { margin-top: var(--space-3); font-size: 0.9375rem; color: var(--text-muted); }
 
 /* ---------- News ---------- */
 .news-grid {
@@ -1314,4 +1416,7 @@ svg { display: block; }
   .reveal { opacity: 1; transform: none; }
   .hero-blob { animation: none; opacity: 0.833; }
   .card:hover { translate: none; }
+  .tech-track { animation: none; }
+  .tech-track .tech-list[aria-hidden="true"] { display: none; }
+  .tech-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }

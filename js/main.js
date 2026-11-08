@@ -1444,33 +1444,37 @@
     renderNews();
   }
 
-  /* ----------------------------------------------------------------- faq */
+  /* ----------------------------------------------------------- about tabs */
 
   /** About Q&A: one answer open at a time; clicking the open one closes it. */
-  function initFaq() {
-    const items = [...document.querySelectorAll(".faq-item")];
-    const setOpen = (item, open) => {
-      item.classList.toggle("is-open", open);
-      item.querySelector(".faq-q button").setAttribute("aria-expanded", String(open));
+  /** About panel tabs (WAI-ARIA tabs pattern, automatic activation). */
+  function initAboutTabs() {
+    const tabs = [...document.querySelectorAll('#about [role="tab"]')];
+    const select = (tab, focus) => {
+      tabs.forEach((other) => {
+        const on = other === tab;
+        other.setAttribute("aria-selected", String(on));
+        other.tabIndex = on ? 0 : -1;
+        document.getElementById(other.getAttribute("aria-controls")).hidden = !on;
+      });
+      if (focus) tab.focus();
     };
-    // Phones start with every answer closed: the three questions fit on one screen.
-    if (window.matchMedia("(max-width: 639px)").matches) items.forEach((item) => setOpen(item, false));
+    // Technology row: a second, hidden-from-AT copy makes the scroll loop seamless.
+    const techList = document.querySelector("#about .tech-list");
+    if (techList) {
+      const copy = techList.cloneNode(true);
+      copy.setAttribute("aria-hidden", "true");
+      techList.after(copy);
+    }
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    items.forEach((item) => {
-      const button = item.querySelector(".faq-q button");
-      button.addEventListener("click", () => {
-        const open = !item.classList.contains("is-open");
-        items.forEach((other) => setOpen(other, other === item && open));
-        if (!open) return;
-        // Closing a long answer above can push this question off the top of the screen;
-        // once the panels have settled, bring it back below the header.
-        setTimeout(() => {
-          const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 0;
-          if (button.getBoundingClientRect().top < header) {
-            button.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "start" });
-          }
-        }, reducedMotion.matches ? 0 : 240);
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (e) => {
+        const last = tabs.length - 1;
+        const next = { ArrowRight: i === last ? 0 : i + 1, ArrowLeft: i === 0 ? last : i - 1, Home: 0, End: last }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        select(tabs[next], true);
       });
     });
   }
@@ -1507,7 +1511,7 @@
     initModals();
     initProjects();
     initNews();
-    initFaq();
+    initAboutTabs();
     updateProgressBar();
     updateBackToTop();
   });

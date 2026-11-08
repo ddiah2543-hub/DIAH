@@ -20,11 +20,10 @@
   .main-nav { display: none; }
   .menu-toggle { display: flex; }
   .projects-grid { --cols: 2; }
-  /* About: one column, kept to a readable width rather than stretched */
+  /* About: one column, panel kept to a readable width */
   .about-layout { grid-template-columns: 1fr; gap: var(--space-7); }
   .about-intro { position: static; }
-  .about-intro,
-  .faq { max-width: 640px; }
+  .about-panel { max-width: 720px; }
 }
 
 /* ---------- ≤760px : mobile ---------- */
@@ -74,11 +73,13 @@
   .services-grid { grid-template-columns: 1fr; }
 
   .about-layout { gap: var(--space-6); }
-  #about .section-title { font-size: 1.75rem; }
-  .about-text { font-size: 1.05rem; }
-  .faq-q button { gap: 12px; padding: var(--space-4) 0; font-size: 1.0625rem; }
-  /* dot 6px + 12px gap; full width on the right, the icon sits above the answer */
-  .faq-a-inner > * { margin-left: 18px; margin-right: 0; }
+  .about-text { font-size: 1.0625rem; }
+  .about-link { display: none; }
+  .about-panel { padding: var(--space-4); }
+  .about-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-tabs [role="tab"] { padding-inline: 0.25rem; font-size: 0.9375rem; }
+  .about-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tech-tile { width: 120px; min-height: 100px; }
   .projects-grid { --cols: 1; }
 }
 

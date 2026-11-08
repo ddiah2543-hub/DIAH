@@ -37,7 +37,7 @@ Edit [js/projects.js](js/projects.js). `projectsData` has one array per language
 The section (and its nav links) is **hidden** while `showNews` is `false` in [js/config.js](js/config.js); set it to `true` once there are articles. Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages. `date` (`YYYY-MM-DD`) is optional — leave it out rather than invent one. `cover: "brand"` uses the DIAH logo cover; a single article is centred automatically.
 
 ### Services, about
-Page order: Hero → O que fazemos (`#services`) → Projectos (`#projects`) → Sobre (`#about`) → Contacto (`#contact`). These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. Each service card has an id (`#software`, `#automacao`, `#dados-ia`, `#consultoria`) that the Services dropdown links to. The Sobre section has a Q&A accordion (questions/answers in translations.js under `about.faq*`; the first answer explains the working process); its technology pills are plain `<li>` text in `index.html`. The first answer starts open on desktop/tablet and all start closed on phones (<640px).
+Page order: Hero → O que fazemos (`#services`) → Projectos (`#projects`) → Sobre (`#about`) → Contacto (`#contact`). These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. Each service card has an id (`#software`, `#automacao`, `#dados-ia`, `#consultoria`) that the Services dropdown links to. The Sobre section is an About block plus a panel with three tabs (Processo · Tecnologias · Prazos); all tab panels are in `index.html` and their copy is in translations.js under `about.*`. Technology logos are inline SVGs from simple-icons (CC0).
 
 ### Social links
 LinkedIn and Instagram URLs live in [js/config.js](js/config.js) (`siteConfig.social`); they are `#` placeholders until the profiles exist.
@@ -51,7 +51,7 @@ The "+N" stats bar (Projectos/Clientes/Workshops) was removed from the About sec
 
 - Project and article **images are intentionally `null`** — the UI generates abstract gradient covers instead, so the site looks complete before real photography exists.
 - Project/news content is placeholder for structure and tone — not final DIAH copy. Replace before launch.
-- The Contact section has no form — "Fale connosco" and "Agendar reunião" both open a `mailto:` link.
+- The Contact section has no form — "Fale connosco" opens a `mailto:` link and "Agendar reunião" opens the Google Calendar booking page.
 - Public contact email currently set to `info@diahsolutions.com`.
 
 ## Design system
