@@ -14,8 +14,9 @@ diah/
 ├── favicon.ico         root favicon (16/32/48px)
 ├── css/
 │   ├── style.css        design tokens (CSS variables) + component styles
-│   └── responsive.css   breakpoints: 1100px / 760px / 420px
+│   └── responsive.css   breakpoints: 1199 / 1100 / 1023 / 760 / 639 / 420px
 ├── js/
+│   ├── config.js        site settings: News on/off, social links (LinkedIn, Instagram)
 │   ├── translations.js  pt/en/fr dictionary, keyed by dot-path (hero.title, ...)
 │   ├── projects.js      projects portfolio data, per language
 │   ├── news.js          news/insights articles data, per language
@@ -33,10 +34,13 @@ diah/
 Edit [js/projects.js](js/projects.js). `projectsData` has one array per language (`pt`, `en`, `fr`) — add the **same project** (same `id`) to all three arrays, translated. `category` must be one of: `software`, `web`, `mobile`, `systems`, `consulting`, `automation` (it drives the portfolio filters and cover color). Leave `image: null` to keep the generated abstract cover, or set `image: "assets/images/your-file.jpg"` once real photography exists (you'll then need to swap the generated `.project-cover` div in `js/main.js` → `projectCardHTML()` / `openProjectModal()` for an `<img>`).
 
 ### News & Insights
-Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages. `date` (`YYYY-MM-DD`) is optional — leave it out rather than invent one. `cover: "brand"` uses the DIAH logo cover; a single article is centred automatically.
+The section (and its nav links) is **hidden** while `showNews` is `false` in [js/config.js](js/config.js); set it to `true` once there are articles. Same pattern in [js/news.js](js/news.js) (`newsData.pt/en/fr`), keep `id` in sync across languages. `date` (`YYYY-MM-DD`) is optional — leave it out rather than invent one. `cover: "brand"` uses the DIAH logo cover; a single article is centred automatically.
 
-### Services, workshops, process, tech stack
-These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. The **Technology** section (frontend/backend/mobile/database/cloud lists) is plain `<li>` text in `index.html` — those are placeholders, replace with DIAH's real stack directly in the markup.
+### Services, about
+Page order: Hero → O que fazemos (`#services`) → Projectos (`#projects`) → Sobre (`#about`) → Contacto (`#contact`). These are static sections written directly in [index.html](index.html) with `data-i18n="key"` attributes; the actual copy lives in [js/translations.js](js/translations.js). To change a label, edit the translation value (all three languages) rather than the HTML. Each service card has an id (`#software`, `#automacao`, `#dados-ia`, `#consultoria`) that the Services dropdown links to. The Sobre section has a Q&A accordion (questions/answers in translations.js under `about.faq*`; the first answer explains the working process); its technology pills are plain `<li>` text in `index.html`. The first answer starts open on desktop/tablet and all start closed on phones (<640px).
+
+### Social links
+LinkedIn and Instagram URLs live in [js/config.js](js/config.js) (`siteConfig.social`); they are `#` placeholders until the profiles exist.
 
 The "+N" stats bar (Projectos/Clientes/Workshops) was removed from the About section — it showed "+0" for clients and workshops with no real figures behind them. Reintroduce it once there are real numbers to show.
 

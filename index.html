@@ -35,15 +35,15 @@
           </button>
           <div class="nav-dropdown" id="servicesMenu">
             <ul>
-              <li><a href="#technology"><span class="nav-dropdown-title" data-i18n="nav.technology">Tecnologia</span><span class="nav-dropdown-desc" data-i18n="nav.technology_desc">As tecnologias com que construímos</span></a></li>
-              <li><a href="#process"><span class="nav-dropdown-title" data-i18n="nav.process">Processo</span><span class="nav-dropdown-desc" data-i18n="nav.process_desc">Como trabalhamos, da ideia ao lançamento</span></a></li>
-              <li><a href="#workshops"><span class="nav-dropdown-title" data-i18n="nav.workshops">Workshops</span><span class="nav-dropdown-desc" data-i18n="nav.workshops_desc">Formação prática para equipas</span></a></li>
-              <li><a href="#consulting"><span class="nav-dropdown-title" data-i18n="nav.consulting">Consultoria</span><span class="nav-dropdown-desc" data-i18n="nav.consulting_desc">Apoio a decisões tecnológicas</span></a></li>
+              <li><a href="#software"><span class="nav-dropdown-title" data-i18n="services.software.title">Software à medida</span></a></li>
+              <li><a href="#automacao"><span class="nav-dropdown-title" data-i18n="services.automation.title">Automação</span></a></li>
+              <li><a href="#dados-ia"><span class="nav-dropdown-title" data-i18n="services.data.title">Dados &amp; IA</span></a></li>
+              <li><a href="#consultoria"><span class="nav-dropdown-title" data-i18n="services.consulting.title">Consultoria &amp; Formação</span></a></li>
             </ul>
           </div>
         </li>
         <li><a href="#projects" data-i18n="nav.projects">Projectos</a></li>
-        <li><a href="#news" data-i18n="nav.news">Notícias</a></li>
+        <li data-feature="news" hidden><a href="#news" data-i18n="nav.news">Notícias</a></li>
         <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
       </ul>
     </nav>
@@ -82,15 +82,15 @@
       </div>
       <div class="mobile-sub" id="mobileServicesMenu">
         <ul>
-          <li><a href="#technology" data-i18n="nav.technology">Tecnologia</a></li>
-          <li><a href="#process" data-i18n="nav.process">Processo</a></li>
-          <li><a href="#workshops" data-i18n="nav.workshops">Workshops</a></li>
-          <li><a href="#consulting" data-i18n="nav.consulting">Consultoria</a></li>
+          <li><a href="#software" data-i18n="services.software.title">Software à medida</a></li>
+          <li><a href="#automacao" data-i18n="services.automation.title">Automação</a></li>
+          <li><a href="#dados-ia" data-i18n="services.data.title">Dados &amp; IA</a></li>
+          <li><a href="#consultoria" data-i18n="services.consulting.title">Consultoria &amp; Formação</a></li>
         </ul>
       </div>
     </li>
     <li><a href="#projects" data-i18n="nav.projects">Projectos</a></li>
-    <li><a href="#news" data-i18n="nav.news">Notícias</a></li>
+    <li data-feature="news" hidden><a href="#news" data-i18n="nav.news">Notícias</a></li>
     <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
   </ul>
@@ -119,7 +119,7 @@
       <p class="hero-text" data-reveal data-i18n="hero.text">A DIAH combina software, automação, dados e consultoria tecnológica para ajudar organizações a trabalhar melhor, mais rápido e de forma mais inteligente.</p>
       <div class="hero-cta" data-reveal>
         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Falar connosco</a>
-        <a href="#about" class="btn btn-ghost" data-i18n="hero.cta_secondary">Conhecer a DIAH</a>
+        <a href="#projects" class="btn btn-ghost" data-i18n="hero.cta_secondary">Ver Projectos</a>
       </div>
     </div>
 
@@ -134,134 +134,59 @@
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow" data-i18n="services.eyebrow">O que fazemos</p>
-        <h2 class="section-title" data-i18n="services.title">Da ideia ao sistema em produção.</h2>
+        <h2 class="section-title" data-i18n="services.title">Quatro formas de pôr a tecnologia a trabalhar para si.</h2>
       </div>
 
       <div class="services-grid">
-        <article class="service-card" data-reveal>
-          <span class="service-num">01</span>
-          <h3 data-i18n="services.s1.title">Desenvolvimento de Software</h3>
-          <p data-i18n="services.s1.text">Desenvolvimento de aplicações e plataformas digitais à medida das necessidades de cada organização.</p>
+        <article class="card service-card" id="software" data-reveal>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3 9h18"/><path d="M10 12.5l-2 2 2 2M14 12.5l2 2-2 2"/><circle class="icon-dot" cx="6" cy="6.75" r="0.9"/></svg>
+          </span>
+          <h3 data-i18n="services.software.title">Software à medida</h3>
+          <p data-i18n="services.software.text">Plataformas web, mobile e sistemas internos, integrados com o que já usa.</p>
+          <ul class="card-tags">
+            <li data-i18n="services.software.tag1">Web</li>
+            <li data-i18n="services.software.tag2">Mobile</li>
+            <li data-i18n="services.software.tag3">APIs</li>
+          </ul>
         </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">02</span>
-          <h3 data-i18n="services.s2.title">Desenvolvimento de Sistemas</h3>
-          <p data-i18n="services.s2.text">Concepção e desenvolvimento de sistemas de informação robustos, escaláveis e preparados para evoluir.</p>
+        <article class="card service-card" id="automacao" data-reveal>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0 1 12.2-4.2L19 8.5"/><path d="M19 4v4.5h-4.5"/><path d="M19 13a7 7 0 0 1-12.2 4.2L5 15.5"/><path d="M5 20v-4.5h4.5"/><path class="icon-accent" d="M12 9.6l2.1 3.8H9.9z"/></svg>
+          </span>
+          <h3 data-i18n="services.automation.title">Automação</h3>
+          <p data-i18n="services.automation.text">Processos repetitivos a correr sozinhos. Menos erros, menos custos.</p>
+          <ul class="card-tags">
+            <li data-i18n="services.automation.tag1">Fluxos</li>
+            <li data-i18n="services.automation.tag2">Integrações</li>
+            <li data-i18n="services.automation.tag3">Documentos</li>
+          </ul>
         </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">03</span>
-          <h3 data-i18n="services.s3.title">Web &amp; Mobile</h3>
-          <p data-i18n="services.s3.text">Aplicações web e mobile modernas, rápidas e orientadas para a experiência do utilizador.</p>
+        <article class="card service-card" id="dados-ia" data-reveal>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16.5v-4M11.5 16.5V9M16 16.5v-6"/><path class="icon-accent" d="M18.5 3v4M16.5 5h4"/></svg>
+          </span>
+          <h3 data-i18n="services.data.title">Dados &amp; IA</h3>
+          <p data-i18n="services.data.text">Dados organizados, dashboards e IA para decidir melhor.</p>
+          <ul class="card-tags">
+            <li data-i18n="services.data.tag1">Dashboards</li>
+            <li data-i18n="services.data.tag2">Analytics</li>
+            <li data-i18n="services.data.tag3">Agentes de IA</li>
+          </ul>
         </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">04</span>
-          <h3 data-i18n="services.s4.title">Consultoria Tecnológica</h3>
-          <p data-i18n="services.s4.text">Consultoria tecnológica para apoiar decisões relacionadas com arquitectura, tecnologia, sistemas e transformação digital.</p>
-        </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">05</span>
-          <h3 data-i18n="services.s5.title">Workshops &amp; Formação</h3>
-          <p data-i18n="services.s5.text">Workshops técnicos e sessões de formação orientadas para equipas e organizações.</p>
-        </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">06</span>
-          <h3 data-i18n="services.s6.title">Transformação Digital</h3>
-          <p data-i18n="services.s6.text">Modernização de processos, sistemas e operações através da utilização estratégica da tecnologia.</p>
-        </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">07</span>
-          <h3 data-i18n="services.s7.title">Integração &amp; APIs</h3>
-          <p data-i18n="services.s7.text">Integração entre sistemas, desenvolvimento de APIs e criação de ecossistemas tecnológicos conectados.</p>
-        </article>
-        <article class="service-card" data-reveal>
-          <span class="service-num">08</span>
-          <h3 data-i18n="services.s8.title">Automação</h3>
-          <p data-i18n="services.s8.text">Automatização de processos e tarefas para reduzir trabalho manual, erros e custos operacionais.</p>
+        <article class="card service-card" id="consultoria" data-reveal>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12.5" rx="2"/><path d="M12 16.5V20M8.5 20h7"/><path class="icon-accent" d="M7.5 12.5l3-3 2.5 2.5 3.5-3.5"/></svg>
+          </span>
+          <h3 data-i18n="services.consulting.title">Consultoria &amp; Formação</h3>
+          <p data-i18n="services.consulting.text">Ajudamos a escolher a tecnologia certa e a capacitar a sua equipa.</p>
+          <ul class="card-tags">
+            <li data-i18n="services.consulting.tag1">Estratégia</li>
+            <li data-i18n="services.consulting.tag2">Arquitectura</li>
+            <li data-i18n="services.consulting.tag3">Workshops</li>
+          </ul>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ TECHNOLOGY ============ -->
-  <section class="section section-alt" id="technology">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow" data-i18n="tech.eyebrow">Stack</p>
-        <h2 class="section-title" data-i18n="tech.title">Construímos com tecnologia.</h2>
-        <p class="section-note" data-i18n="tech.note">Tecnologias representativas, facilmente adaptáveis ao stack real de cada projecto.</p>
-      </div>
-
-      <div class="tech-grid">
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.frontend">Frontend</h3>
-          <ul class="tag-list">
-            <li>JavaScript</li><li>Vue.js</li>
-          </ul>
-        </div>
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.backend">Backend</h3>
-          <ul class="tag-list">
-            <li>Python</li><li>APIs</li>
-          </ul>
-        </div>
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.mobile">Mobile</h3>
-          <ul class="tag-list">
-            <li>Expo</li>
-          </ul>
-        </div>
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.database">Base de dados</h3>
-          <ul class="tag-list">
-            <li>PostgreSQL</li>
-          </ul>
-        </div>
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.cloud">Cloud &amp; DevOps</h3>
-          <ul class="tag-list">
-            <li>Docker</li><li>Kubernetes</li>
-          </ul>
-        </div>
-        <div class="tech-col" data-reveal>
-          <h3 data-i18n="tech.workflow">Dados &amp; Fluxos de trabalho</h3>
-          <ul class="tag-list">
-            <li>Temporal.io</li><li>Formance</li><li>Spark</li><li>Process Mining</li><li>GIS</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow" data-i18n="process.eyebrow">Processo</p>
-        <h2 class="section-title" data-i18n="process.title">Como transformamos ideias em tecnologia.</h2>
-      </div>
-
-      <ol class="process-timeline">
-        <li class="process-step" data-reveal>
-          <span class="process-num">01</span>
-          <h3 data-i18n="process.p1.title">Descobrir</h3>
-          <p data-i18n="process.p1.text">Compreendemos o problema, os utilizadores, os processos e os objectivos.</p>
-        </li>
-        <li class="process-step" data-reveal>
-          <span class="process-num">02</span>
-          <h3 data-i18n="process.p2.title">Idealizar</h3>
-          <p data-i18n="process.p2.text">Definimos a arquitectura, experiência e solução tecnológica.</p>
-        </li>
-        <li class="process-step" data-reveal>
-          <span class="process-num">03</span>
-          <h3 data-i18n="process.p3.title">Desenvolver</h3>
-          <p data-i18n="process.p3.text">Construímos, testamos e iteramos a solução.</p>
-        </li>
-        <li class="process-step" data-reveal>
-          <span class="process-num">04</span>
-          <h3 data-i18n="process.p4.title">Evoluir</h3>
-          <p data-i18n="process.p4.text">Acompanhamos a evolução do sistema depois do lançamento.</p>
-        </li>
-      </ol>
     </div>
   </section>
 
@@ -277,79 +202,77 @@
     </div>
   </section>
 
-  <!-- ============ WORKSHOPS ============ -->
-  <section class="section" id="workshops">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow" data-i18n="workshops.eyebrow">Workshops</p>
-        <h2 class="section-title" data-i18n="workshops.title">Conhecimento também é tecnologia.</h2>
-        <p class="section-note" data-i18n="workshops.text">Partilhamos conhecimento técnico através de workshops práticos, desenhados para equipas que querem evoluir mais depressa.</p>
-      </div>
-
-      <div class="workshops-grid" id="workshopsGrid">
-        <div class="workshop-card" data-reveal><span class="workshop-icon" aria-hidden="true">&lt;/&gt;</span><h3 data-i18n="workshops.w1">Desenvolvimento de Software</h3></div>
-        <div class="workshop-card" data-reveal><span class="workshop-icon" aria-hidden="true">◱</span><h3 data-i18n="workshops.w2">Desenvolvimento Web</h3></div>
-        <div class="workshop-card" data-reveal><span class="workshop-icon" aria-hidden="true">✦</span><h3 data-i18n="workshops.w3">Inteligência Artificial</h3></div>
-        <div class="workshop-card" data-reveal><span class="workshop-icon" aria-hidden="true">⇄</span><h3 data-i18n="workshops.w4">Transformação Digital</h3></div>
-        <div class="workshop-card is-extra" data-reveal><span class="workshop-icon" aria-hidden="true">▣</span><h3 data-i18n="workshops.w5">Arquitectura de Sistemas</h3></div>
-        <div class="workshop-card is-extra" data-reveal><span class="workshop-icon" aria-hidden="true">◎</span><h3 data-i18n="workshops.w6">Metodologias Ágeis &amp; Gestão de Projectos</h3></div>
-        <div class="workshop-card is-extra" data-reveal><span class="workshop-icon" aria-hidden="true">∞</span><h3 data-i18n="workshops.w7">DevOps</h3></div>
-        <div class="workshop-card is-extra" data-reveal><span class="workshop-icon" aria-hidden="true">▤</span><h3 data-i18n="workshops.w8">Dados &amp; Analítica</h3></div>
-      </div>
-
-      <div class="workshops-cta" data-reveal>
-        <button type="button" class="btn btn-outline" id="workshopsToggle" data-i18n="workshops.cta">Ver workshops</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONSULTING ============ -->
-  <section class="section section-alt" id="consulting">
-    <div class="container consulting-layout">
-      <div data-reveal>
-        <p class="eyebrow" data-i18n="consulting.eyebrow">Consultoria</p>
-        <h2 class="section-title" data-i18n="consulting.title">Decisões tecnológicas melhores.</h2>
-        <p class="section-note" data-i18n="consulting.text">Ajudamos organizações a compreender desafios tecnológicos, avaliar alternativas e tomar decisões com maior clareza e confiança.</p>
-      </div>
-      <ul class="consulting-list" data-reveal>
-        <li><span class="consulting-index">01</span><span data-i18n="consulting.c1">Estratégia de TI</span></li>
-        <li><span class="consulting-index">02</span><span data-i18n="consulting.c2">Arquitectura de Software</span></li>
-        <li><span class="consulting-index">03</span><span data-i18n="consulting.c3">Avaliação Tecnológica</span></li>
-        <li><span class="consulting-index">04</span><span data-i18n="consulting.c4">Transformação Digital</span></li>
-        <li><span class="consulting-index">05</span><span data-i18n="consulting.c5">Modernização de Sistemas</span></li>
-        <li><span class="consulting-index">06</span><span data-i18n="consulting.c6">Aconselhamento Técnico</span></li>
-      </ul>
-    </div>
-  </section>
-
   <!-- ============ ABOUT ============ -->
   <section class="section" id="about">
     <div class="container about-layout">
-      <div data-reveal>
+      <div class="about-intro" data-reveal>
         <p class="eyebrow" data-i18n="about.eyebrow">Sobre</p>
         <h2 class="section-title" data-i18n="about.title">Somos uma empresa de tecnologia.</h2>
-        <p class="section-note" data-i18n="about.text">A DIAH desenvolve tecnologia para pessoas e organizações que procuram resolver problemas, melhorar processos e construir novas possibilidades.</p>
-        <p class="about-combine" data-i18n="about.combine">Engenharia + Consultoria + Conhecimento</p>
+        <p class="about-text" data-i18n="about.text">Na DIAH Solutions, desenhamos soluções tecnológicas para desafios reais, acompanhando a sua evolução a longo prazo.</p>
       </div>
-      <div class="pillars" data-reveal>
-        <div class="pillar">
-          <h3 data-i18n="about.pillar1.title">Engenharia</h3>
-          <p data-i18n="about.pillar1.text">Construímos sistemas e software.</p>
+
+      <div class="faq" data-reveal>
+        <div class="faq-item is-open">
+          <h3 class="faq-q">
+            <button type="button" id="faq-q1" aria-expanded="true" aria-controls="faq-a1">
+              <span class="faq-dot" aria-hidden="true"></span>
+              <span class="faq-q-text" data-i18n="about.faq1.q">Como trabalhamos na DIAH Solutions?</span>
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 12h12"/><path class="faq-icon-v" d="M12 6v12"/></svg></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq-a-inner">
+              <p data-i18n="about.faq1.a">Na DIAH Solutions, transformamos desafios em tecnologia através de um método claro e ágil em 4 passos: começamos por compreender o seu negócio e os seus objetivos; desenhamos a arquitetura e a solução ideal; construímos e entregamos valor por etapas com testes rigorosos; e, após o lançamento, asseguramos a monitorização e evolução contínua do sistema.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar">
-          <h3 data-i18n="about.pillar2.title">Consultoria</h3>
-          <p data-i18n="about.pillar2.text">Ajudamos a tomar melhores decisões tecnológicas.</p>
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <button type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+              <span class="faq-dot" aria-hidden="true"></span>
+              <span class="faq-q-text" data-i18n="about.faq2.q">Que tecnologias usamos?</span>
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 12h12"/><path class="faq-icon-v" d="M12 6v12"/></svg></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq-a-inner">
+              <p data-i18n="about.faq2.a">A tecnologia serve o problema, não o contrário. Escolhemos as ferramentas certas para cada desafio. Dominamos ferramentas líderes de mercado para cobrir diferentes tipos de projetos, como:</p>
+              <ul class="faq-tags">
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>Vue.js</li>
+                <li>PostgreSQL</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>Spark</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="pillar">
-          <h3 data-i18n="about.pillar3.title">Conhecimento</h3>
-          <p data-i18n="about.pillar3.text">Partilhamos conhecimento através de workshops e formação.</p>
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <button type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+              <span class="faq-dot" aria-hidden="true"></span>
+              <span class="faq-q-text" data-i18n="about.faq3.q">Quanto tempo demora um projecto?</span>
+              <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 12h12"/><path class="faq-icon-v" d="M12 6v12"/></svg></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq-a-inner">
+              <p class="faq-lead" data-i18n="about.faq3.lead">Prazos realistas com entregas desde as primeiras semanas.</p>
+              <p data-i18n="about.faq3.p1">O tempo de desenvolvimento está diretamente ligado à complexidade do projeto. Olhando para o nosso portfólio e experiência, o intervalo habitual de entrega situa-se entre as 2 semanas e os 6 meses.</p>
+              <p data-i18n="about.faq3.p2">Trabalhamos em ciclos ágeis de duas semanas. Isto significa que vê o seu sistema a evoluir em tempo real através de entregas parciais frequentes. O prazo final exato é validado e entregue na proposta, após desenharmos a solução ideal na fase da descoberta.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ NEWS ============ -->
-  <section class="section section-alt" id="news">
+  <!-- ============ NEWS ============
+       Hidden until there are articles: set siteConfig.showNews = true in js/config.js
+       (this also shows the "Notícias" links in the nav). -->
+  <section class="section" id="news" data-feature="news" hidden>
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow" data-i18n="news.eyebrow">Insights</p>
@@ -364,8 +287,8 @@
     <div class="container">
       <div class="contact-layout" data-reveal>
         <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
-        <h2 class="section-title" data-i18n="contact.title">Vamos construir alguma coisa?</h2>
-        <p class="section-note" data-i18n="contact.text">Tem uma ideia, um problema tecnológico ou um sistema que precisa de evoluir? Vamos conversar.</p>
+        <h2 class="section-title" data-i18n="contact.title">Tem um desafio? Vamos conversar.</h2>
+        <p class="section-note" data-i18n="contact.text">Conte-nos a sua ideia ou o problema que quer resolver.</p>
 
         <div class="contact-info">
           <div>
@@ -399,27 +322,16 @@
       <p data-i18n="footer.tagline">Tecnologia que transforma ideias em soluções.</p>
     </div>
 
-    <div class="footer-col">
+    <nav class="footer-col" aria-label="Navegação" data-i18n-attr="aria-label:footer.nav_title">
       <h4 data-i18n="footer.nav_title">Navegação</h4>
       <ul>
         <li><a href="#services" data-i18n="nav.services">Serviços</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projectos</a></li>
-        <li><a href="#workshops" data-i18n="nav.workshops">Workshops</a></li>
-        <li><a href="#news" data-i18n="nav.news">Notícias</a></li>
+        <li data-feature="news" hidden><a href="#news" data-i18n="nav.news">Notícias</a></li>
         <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
       </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4 data-i18n="footer.services_title">Serviços</h4>
-      <ul>
-        <li><a href="#services" data-i18n="services.s1.title">Desenvolvimento de Software</a></li>
-        <li><a href="#services" data-i18n="services.s3.title">Web &amp; Mobile</a></li>
-        <li><a href="#consulting" data-i18n="services.s4.title">Consultoria Tecnológica</a></li>
-        <li><a href="#workshops" data-i18n="services.s5.title">Workshops &amp; Formação</a></li>
-        <li><a href="#services" data-i18n="services.s8.title">Automação</a></li>
-      </ul>
-    </div>
+    </nav>
 
     <div class="footer-col">
       <h4 data-i18n="footer.contact_title">Contacto</h4>
@@ -432,6 +344,19 @@
 
   <div class="container footer-bottom">
     <p data-i18n="footer.rights">© 2026 DIAH. Todos os direitos reservados.</p>
+    <!-- Social URLs live in js/config.js (siteConfig.social). TODO: link LinkedIn / TODO: link Instagram -->
+    <ul class="footer-social">
+      <li>
+        <a href="#" data-social="linkedin" target="_blank" rel="noopener noreferrer" aria-label="DIAH no LinkedIn" data-i18n-attr="aria-label:footer.linkedin">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.6v.1M12 16v-5.5M12 13a2.4 2.4 0 0 1 4.6-1V16"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href="#" data-social="instagram" target="_blank" rel="noopener noreferrer" aria-label="DIAH no Instagram" data-i18n-attr="aria-label:footer.instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.3 6.7v.1"/></svg>
+        </a>
+      </li>
+    </ul>
   </div>
 </footer>
 
@@ -463,6 +388,7 @@
   </div>
 </div>
 
+<script src="js/config.js"></script>
 <script src="js/translations.js"></script>
 <script src="js/projects.js"></script>
 <script src="js/news.js"></script>

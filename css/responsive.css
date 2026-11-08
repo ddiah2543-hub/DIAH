@@ -1,30 +1,30 @@
 /* ==========================================================================
    DIAH — Responsive overrides
-   Breakpoints: 1100px (tablet/laptop), 760px (mobile), 420px (small phones)
+   Breakpoints: 1199px (services grid), 1100px (tablet/laptop), 1023px (nav),
+   760px (mobile), 639px (single-column cards), 420px (small phones)
    ========================================================================== */
 
-/* Full nav + controls fit down to ~960px in every language; collapse below 1024 */
-@media (max-width: 1023px) {
-  .main-nav { display: none; }
-  .menu-toggle { display: flex; }
+/* ---------- ≤1199px : services in 2 columns ---------- */
+@media (max-width: 1199px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- ≤1100px : tablet / small laptop ---------- */
 @media (max-width: 1100px) {
   .hero-bg { --grid-cell: 64px; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .tech-grid { grid-template-columns: repeat(3, 1fr); row-gap: var(--space-7); }
-  .process-timeline { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-8); }
-  .process-timeline::before { display: none; }
-
-  .workshops-grid { grid-template-columns: repeat(3, 1fr); }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
-  .consulting-layout,
+/* Full nav + controls fit down to ~960px in every language; collapse below 1024 */
+@media (max-width: 1023px) {
+  .main-nav { display: none; }
+  .menu-toggle { display: flex; }
+  .projects-grid { --cols: 2; }
+  /* About: one column, kept to a readable width rather than stretched */
   .about-layout { grid-template-columns: 1fr; gap: var(--space-7); }
-
-  .footer-grid { grid-template-columns: repeat(3, 1fr); }
-  .footer-brand { grid-column: 1 / -1; }
+  .about-intro { position: static; }
+  .about-intro,
+  .faq { max-width: 640px; }
 }
 
 /* ---------- ≤760px : mobile ---------- */
@@ -42,14 +42,19 @@
 
   .nav-cta { display: none; }
 
-  .services-grid { grid-template-columns: 1fr; }
-  .tech-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-timeline { grid-template-columns: 1fr; }
+  /* Touch targets ≥44px */
+  .theme-toggle,
+  .menu-toggle { width: 44px; height: 44px; }
+  .logo { min-height: 44px; }
+  .scroll-indicator { min-width: 44px; }
+  .mobile-lang-switch .lang-btn { min-width: 44px; min-height: 44px; }
+  .footer-col a,
+  .contact-info a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .footer-col ul { gap: 0; }
 
-  .workshops-grid { grid-template-columns: repeat(2, 1fr); }
   .news-grid { grid-template-columns: 1fr; }
 
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 
   .contact-info { gap: var(--space-6); }
@@ -59,16 +64,26 @@
   .mc-columns { grid-template-columns: 1fr; gap: var(--space-6); }
   .mc-cover.is-brand { aspect-ratio: 16/9; }
 
-  .back-to-top { right: var(--space-4); bottom: var(--space-4); width: 42px; height: 42px; }
+  .back-to-top { right: var(--space-4); bottom: var(--space-4); width: 44px; height: 44px; }
 
   .cursor-dot { display: none; }
 }
 
+/* ---------- ≤639px : one card per row ---------- */
+@media (max-width: 639px) {
+  .services-grid { grid-template-columns: 1fr; }
+
+  .about-layout { gap: var(--space-6); }
+  #about .section-title { font-size: 1.75rem; }
+  .about-text { font-size: 1.05rem; }
+  .faq-q button { gap: 12px; padding: var(--space-4) 0; font-size: 1.0625rem; }
+  /* dot 6px + 12px gap; full width on the right, the icon sits above the answer */
+  .faq-a-inner > * { margin-left: 18px; margin-right: 0; }
+  .projects-grid { --cols: 1; }
+}
+
 /* ---------- ≤420px : small phones ---------- */
 @media (max-width: 420px) {
-  .tech-grid { grid-template-columns: 1fr 1fr; }
-  .workshops-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
   /* No room for the language switch beside the logo and menu button */
   .header-controls .lang-switch { display: none; }
   .mobile-lang-switch { display: flex; }

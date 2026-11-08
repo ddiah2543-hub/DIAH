@@ -84,8 +84,6 @@
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.lang === state.lang);
     });
-
-    updateWorkshopsToggleLabel();
   }
 
   function setLang(lang) {
@@ -1177,7 +1175,7 @@
       { passive: true }
     );
 
-    const hoverSelector = "a, button, .project-card, .news-card, .workshop-card, input, select, textarea";
+    const hoverSelector = "a, button, .project-card, .news-card, input, select, textarea";
     document.addEventListener("mouseover", (e) => {
       if (e.target.closest(hoverSelector)) dot.classList.add("is-hover");
     });
@@ -1240,7 +1238,7 @@
 
   function projectCardHTML(p) {
     return `
-      <article class="project-card reveal is-visible" data-id="${p.id}">
+      <article class="card project-card reveal is-visible" data-id="${p.id}">
         <div class="project-cover is-wide" style="--cover-gradient:${AKITEM_GRADIENT}">
           <div class="project-cover-grid"></div>
           ${akitemVisualSVG()}
@@ -1446,31 +1444,56 @@
     renderNews();
   }
 
-  /* ----------------------------------------------------------- workshops */
+  /* ----------------------------------------------------------------- faq */
 
-  function updateWorkshopsToggleLabel() {
-    const grid = document.getElementById("workshopsGrid");
-    const btn = document.getElementById("workshopsToggle");
-    if (!grid || !btn) return;
-    const expanded = grid.classList.contains("is-expanded");
-    btn.textContent = expanded ? t("workshops.cta_less") : t("workshops.cta");
+  /** About Q&A: one answer open at a time; clicking the open one closes it. */
+  function initFaq() {
+    const items = [...document.querySelectorAll(".faq-item")];
+    const setOpen = (item, open) => {
+      item.classList.toggle("is-open", open);
+      item.querySelector(".faq-q button").setAttribute("aria-expanded", String(open));
+    };
+    // Phones start with every answer closed: the three questions fit on one screen.
+    if (window.matchMedia("(max-width: 639px)").matches) items.forEach((item) => setOpen(item, false));
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    items.forEach((item) => {
+      const button = item.querySelector(".faq-q button");
+      button.addEventListener("click", () => {
+        const open = !item.classList.contains("is-open");
+        items.forEach((other) => setOpen(other, other === item && open));
+        if (!open) return;
+        // Closing a long answer above can push this question off the top of the screen;
+        // once the panels have settled, bring it back below the header.
+        setTimeout(() => {
+          const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 0;
+          if (button.getBoundingClientRect().top < header) {
+            button.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "start" });
+          }
+        }, reducedMotion.matches ? 0 : 240);
+      });
+    });
   }
 
-  function initWorkshops() {
-    const grid = document.getElementById("workshopsGrid");
-    const btn = document.getElementById("workshopsToggle");
-    btn.addEventListener("click", () => {
-      grid.classList.toggle("is-expanded");
-      updateWorkshopsToggleLabel();
-      if (!grid.classList.contains("is-expanded")) {
-        grid.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
-      }
+  /* -------------------------------------------------------------- config */
+
+  /** Applies js/config.js: optional sections (e.g. News) and social links. */
+  function applySiteConfig() {
+    const config = typeof siteConfig === "undefined" ? {} : siteConfig;
+    document.querySelectorAll('[data-feature="news"]').forEach((el) => {
+      el.hidden = !config.showNews;
+    });
+    const social = config.social || {};
+    document.querySelectorAll("[data-social]").forEach((a) => {
+      const url = social[a.dataset.social];
+      if (url) a.setAttribute("href", url);
     });
   }
 
   /* ---------------------------------------------------------------- init */
 
   document.addEventListener("DOMContentLoaded", () => {
+    applySiteConfig();
     initLang();
     initTheme();
     initHeader();
@@ -1484,7 +1507,7 @@
     initModals();
     initProjects();
     initNews();
-    initWorkshops();
+    initFaq();
     updateProgressBar();
     updateBackToTop();
   });
